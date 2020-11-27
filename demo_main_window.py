@@ -178,7 +178,7 @@ class Ui_MainWindow(object):
         font.setKerning(False)
         self.home_button.setFont(font)
         self.home_button.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.home_button.setStyleSheet("background-image: url(:/icons/icons/cil-home.png);\n"
+        self.home_button.setStyleSheet("background-image: url(:/icons/icons/cil-rss.png);\n"
 "background-repeat: none;\n"
 "padding-left: 50px;\n"
 "background-position: center left;\n"
@@ -311,7 +311,7 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.home_button.setText(_translate("MainWindow", "HOME"))
+        self.home_button.setText(_translate("MainWindow", "SENSORS"))
         self.accounts_button.setText(_translate("MainWindow", "ACCOUNT"))
         self.settings_button.setText(_translate("MainWindow", "SETTINGS"))
         self.pushButton_generate_random_signal.setText(_translate("MainWindow", "Update Graph"))

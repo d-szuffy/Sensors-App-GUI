@@ -415,14 +415,14 @@ QPushButton:hover{
                 <cursorShape>PointingHandCursor</cursorShape>
                </property>
                <property name="styleSheet">
-                <string notr="true">background-image: url(:/icons/icons/cil-home.png);
+                <string notr="true">background-image: url(:/icons/icons/cil-rss.png);
 background-repeat: none;
 padding-left: 50px;
 background-position: center left;
 </string>
                </property>
                <property name="text">
-                <string>HOME</string>
+                <string>SENSORS</string>
                </property>
                <property name="default">
                 <bool>false</bool>

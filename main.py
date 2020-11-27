@@ -28,7 +28,7 @@ class MyForm(QMainWindow):
         #Restore/Maximize window
         self.ui.restoreButton.clicked.connect(lambda: self.restore_or_maximize_window())
 
-        self.ui.stackedWidget.setCurrentWidget(self.ui.settings_page)
+        self.ui.stackedWidget.setCurrentWidget(self.ui.home_page)
 
         self.ui.home_button.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.home_page))
         self.ui.accounts_button.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.accounts_page))
