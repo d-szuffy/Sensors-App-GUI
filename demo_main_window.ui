@@ -541,7 +541,7 @@ QPushButton:hover{
                  <string notr="true">color: rgb(255, 255, 255);</string>
                 </property>
                 <property name="text">
-                 <string>Generate Random Signal</string>
+                 <string>Update Graph</string>
                 </property>
                </widget>
               </item>
