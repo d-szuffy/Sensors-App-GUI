@@ -4,8 +4,7 @@ from PyQt5.QtCore import Qt, QPropertyAnimation
 from matplotlib.backends.backend_qt5agg import (NavigationToolbar2QT as NavigationToolbar)
 
 from demo_main_window import *
-import numpy as np
-import random
+import pandas
 
 
 WINDOW_SIZE = 0
@@ -68,20 +67,12 @@ class MyForm(QMainWindow):
 
     def updateGraph(self):
 
-        fs = 500
-        f = random.randint(1, 100)
-        ts = 1 / fs
-        length_of_signal = 100
-        t = np.linspace(0, 1, length_of_signal)
-
-        cosinus_signal = np.cos(2 * np.pi * f * t)
-        sinus_signal = np.sin(2 * np.pi * f * t)
-
+        data = pandas.read_csv('data.csv')
+        x = data['x_val']
+        y = data['y_val']
         self.ui.MplWidget.canvas.axes.clear()
-        self.ui.MplWidget.canvas.axes.plot(t, cosinus_signal)
-        self.ui.MplWidget.canvas.axes.plot(t, sinus_signal)
-        self.ui.MplWidget.canvas.axes.legend(('cosinus', 'sinus'), loc='upper left')
-        self.ui.MplWidget.canvas.axes.set_title('Cosinus - Sinus Signal')
+        self.ui.MplWidget.canvas.axes.plot(y)
+        self.ui.MplWidget.canvas.axes.set_title('Sensor 1 - temperature readings')
         self.ui.MplWidget.canvas.draw()
 
 
@@ -124,10 +115,10 @@ class MyForm(QMainWindow):
             newwidth = 50
 
         self.animation = QPropertyAnimation(self.ui.left_side_menu, b"minimumWidth")
-        self.animation.setDuration(250)
+        self.animation.setDuration(150)
         self.animation.setStartValue(width)
         self.animation.setEndValue(newwidth)
-        self.animation.setEasingCurve(QtCore.QEasingCurve.InOutQuart)
+        # self.animation.setEasingCurve(QtCore.QEasingCurve.InOutQuart)
         self.animation.start()
 
 if __name__ == "__main__":
