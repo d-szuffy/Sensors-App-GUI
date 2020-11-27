@@ -314,7 +314,7 @@ class Ui_MainWindow(object):
         self.home_button.setText(_translate("MainWindow", "HOME"))
         self.accounts_button.setText(_translate("MainWindow", "ACCOUNT"))
         self.settings_button.setText(_translate("MainWindow", "SETTINGS"))
-        self.pushButton_generate_random_signal.setText(_translate("MainWindow", "Generate Random Signal"))
+        self.pushButton_generate_random_signal.setText(_translate("MainWindow", "Update Graph"))
         self.label_2.setText(_translate("MainWindow", "Accounts Page"))
         self.label_4.setText(_translate("MainWindow", "Settings Page"))
         self.label_3.setText(_translate("MainWindow", "RIGHT MENU"))
