@@ -118,8 +118,11 @@ class MyForm(QMainWindow):
         self.animation.setDuration(150)
         self.animation.setStartValue(width)
         self.animation.setEndValue(newwidth)
-        # self.animation.setEasingCurve(QtCore.QEasingCurve.InOutQuart)
+        self.animation.setEasingCurve(QtCore.QEasingCurve.InOutQuart)
         self.animation.start()
+
+
+
 
 if __name__ == "__main__":
     App = QApplication(sys.argv)

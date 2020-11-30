@@ -1,10 +1,7 @@
 import sys
 from PyQt5.QtWidgets import QMainWindow, QApplication
 from PyQt5.QtCore import Qt, QPropertyAnimation
-from matplotlib.backends.backend_qt5agg import (NavigationToolbar2QT as NavigationToolbar)
-
 from concept_main_window import *
-import pandas
 
 
 WINDOW_SIZE = 0
@@ -19,33 +16,39 @@ class MyForm(QMainWindow):
         self.setWindowFlag(Qt.FramelessWindowHint)
         # self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
 
- # Button click events to our top bar buttons
-        #
-        #Minimize window
+        # Button click events to our top bar buttons
+
+        # Minimize window
         self.ui.minimizeButton.clicked.connect(lambda: self.showMinimized())
-        #Close window
+        # Close window
         self.ui.closeButton.clicked.connect(lambda: self.close())
-        #Restore/Maximize window
+        # Restore/Maximize window
         self.ui.restoreButton.clicked.connect(lambda: self.restore_or_maximize_window())
 
-        self.ui.stackedWidget.setCurrentWidget(self.ui.home_page)
-
-        self.ui.home_button.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.home_page))
+        self.ui.stackedWidget.setCurrentWidget(self.ui.sensors_page)
+        self.ui.sensors_stacked_widget.setCurrentIndex(0)
+        self.ui.sensors_button.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.sensors_page))
         self.ui.accounts_button.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.accounts_page))
         self.ui.settings_button.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.settings_page))
+        self.ui.sensor1_next_btn.clicked.connect(lambda: self.nextPage())
+        self.ui.sensor2_prev_btn.clicked.connect(lambda: self.prevPage())
+        self.ui.sensor2_next_btn.clicked.connect(lambda: self.nextPage())
+        self.ui.sensor3_prev_btn.clicked.connect(lambda: self.prevPage())
+        self.ui.sensor3_next_btn.clicked.connect(lambda: self.nextPage())
+        self.ui.sensor4_prev_btn.clicked.connect(lambda: self.prevPage())
+
 
 #        self.ui.pushButton_generate_random_signal.clicked.connect(lambda: self.updateGraph())
 
 #        self.addToolBar(NavigationToolbar(self.ui.MplWidget.canvas, self.ui.MplWidget))
 
-
     # Restore or maximize your window
 
-
         def moveWindow(e):
+
             # Detect if the window is  normal size
             # ###############################################
-            if self.isMaximized() == False:  # Not maximized
+            if not self.isMaximized():  # Not maximized
                 # Move window only when window is normal size
                 # ###############################################
                 # if left mouse button is clicked (Only accept left mouse button clicks)
@@ -56,12 +59,9 @@ class MyForm(QMainWindow):
                     e.accept()
             # ###############################################
 
-
         self.ui.main_header.mouseMoveEvent = moveWindow
 
         self.ui.pushButton.clicked.connect(lambda: self.slideLeftMenu())
-        self.ui.sensor1_expand_btn.clicked.connect(lambda: self.slideSensor1())
-
         self.show()
 
 
@@ -75,8 +75,8 @@ class MyForm(QMainWindow):
 #        self.ui.MplWidget.canvas.axes.set_title('Sensor 1 - temperature readings')
 #        self.ui.MplWidget.canvas.draw()
 
-
     def mousePressEvent(self, event):
+
         # ###############################################
         # Get the current position of the mouse
         self.clickPosition = event.globalPos()
@@ -87,23 +87,35 @@ class MyForm(QMainWindow):
 
     def restore_or_maximize_window(self):
 
-# Global windows state
-        global WINDOW_SIZE #The default value is zero to show that the size is not maximized
+        # Global windows state
+        global WINDOW_SIZE
+        # The default value is zero to show that the size is not maximized
         win_status = WINDOW_SIZE
 
         if win_status == 0:
-# If the window is not maximized
+            # If the window is not maximized
         	WINDOW_SIZE = 1
-# Update value to show that the window has been maximized
+            # Update value to show that the window has been maximized
         	self.showMaximized()
-# Update button icon
-# self.ui.restoreButton.setIcon(QtGui.QIcon(u":/icons/icons/cil-window-maximize.png"))#Show maximized icon
+            # Update button icon
+            # self.ui.restoreButton.setIcon(QtGui.QIcon(u":/icons/icons/cil-window-maximize.png"))#Show maximized icon
         else:
-# If the window is on its default size
-            WINDOW_SIZE = 0 #Update value to show that the window has been minimized/set to normal size (which is 800 by 400)
+            # If the window is on its default size
+            WINDOW_SIZE = 0
+            # Update value to show that the window has been minimized/set to normal size (which is 800 by 400)
             self.showNormal()
-# Update button icon
-# self.ui.restoreButton.setIcon(QtGui.QIcon(u":/icons/icons/cil-window-restore.png"))#Show minized icon
+            # Update button icon
+            # self.ui.restoreButton.setIcon(QtGui.QIcon(u":/icons/icons/cil-window-restore.png"))#Show minized icon
+
+    def nextPage(self):
+
+        i = self.ui.sensors_stacked_widget.currentIndex()
+        self.ui.sensors_stacked_widget.setCurrentIndex(i + 1)
+
+    def prevPage(self):
+
+        i = self.ui.sensors_stacked_widget.currentIndex()
+        self.ui.sensors_stacked_widget.setCurrentIndex(i - 1)
 
     def slideLeftMenu(self):
 
@@ -118,24 +130,6 @@ class MyForm(QMainWindow):
         self.animation.setDuration(150)
         self.animation.setStartValue(width)
         self.animation.setEndValue(newwidth)
-        self.animation.setEasingCurve(QtCore.QEasingCurve.InOutQuart)
-        self.animation.start()
-
-    def slideSensor1(self):
-
-        height = self.ui.sensor1_graph_frame.height()
-        print(height)
-        if height == 0:
-            newheight = 350
-            self.ui.sensor1_graph_frame.setMaximumHeight(5000)
-        else:
-            newheight = 0
-            self.ui.sensor1_graph_frame.setMaximumHeight(0)
-
-        self.animation = QPropertyAnimation(self.ui.sensor1_graph_frame, b"minimumHeight")
-        self.animation.setDuration(150)
-        self.animation.setStartValue(height)
-        self.animation.setEndValue(newheight)
         self.animation.setEasingCurve(QtCore.QEasingCurve.InOutQuart)
         self.animation.start()
 
