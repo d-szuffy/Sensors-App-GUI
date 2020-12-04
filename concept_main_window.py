@@ -28,7 +28,7 @@ class Ui_MainWindow(object):
 "    border-bottom: 1px solid #000;\n"
 "    background-color: rgb(0, 0, 0);\n"
 "}")
-        self.main_header.setFrameShape(QtWidgets.QFrame.WinPanel)
+        self.main_header.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.main_header.setFrameShadow(QtWidgets.QFrame.Raised)
         self.main_header.setObjectName("main_header")
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self.main_header)
@@ -45,16 +45,14 @@ class Ui_MainWindow(object):
         self.horizontalLayout_5.setSpacing(0)
         self.horizontalLayout_5.setObjectName("horizontalLayout_5")
         self.left_menu_toggle = QtWidgets.QFrame(self.tittle_bar_container)
-        self.left_menu_toggle.setMinimumSize(QtCore.QSize(50, 0))
-        self.left_menu_toggle.setMaximumSize(QtCore.QSize(50, 16777215))
+        self.left_menu_toggle.setMinimumSize(QtCore.QSize(50, 50))
+        self.left_menu_toggle.setMaximumSize(QtCore.QSize(50, 50))
         self.left_menu_toggle.setStyleSheet("QFrame{\n"
 "    background-color: rgb(0, 0, 0);\n"
 "}\n"
 "QPushButton{\n"
-"\n"
 "    border: none;\n"
-"    border-radius: 5px;\n"
-"    \n"
+"    border-radius: 10px;\n"
 "    background-color: rgb(0, 0, 0);\n"
 "    color: rgb(255, 255, 255);\n"
 "}\n"
@@ -62,7 +60,7 @@ class Ui_MainWindow(object):
 "    background-color: rgb(0, 104, 156);\n"
 "}")
         self.left_menu_toggle.setFrameShape(QtWidgets.QFrame.NoFrame)
-        self.left_menu_toggle.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.left_menu_toggle.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.left_menu_toggle.setObjectName("left_menu_toggle")
         self.horizontalLayout_4 = QtWidgets.QHBoxLayout(self.left_menu_toggle)
         self.horizontalLayout_4.setContentsMargins(0, 0, 0, 0)
@@ -70,7 +68,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_4.setObjectName("horizontalLayout_4")
         self.pushButton = QtWidgets.QPushButton(self.left_menu_toggle)
         self.pushButton.setMinimumSize(QtCore.QSize(50, 50))
-        self.pushButton.setMaximumSize(QtCore.QSize(50, 16777215))
+        self.pushButton.setMaximumSize(QtCore.QSize(50, 50))
         self.pushButton.setText("")
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap(":/icons/icons/cil-menu.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
@@ -141,24 +139,28 @@ class Ui_MainWindow(object):
 "    background-color: rgb(0, 0, 0);\n"
 "}\n"
 "QPushButton{\n"
-"    padding: 20px 10px;\n"
 "    border: none;\n"
 "    border-radius: 10px;\n"
-"    \n"
 "    background-color: rgb(0, 0, 0);\n"
 "    color: rgb(255, 255, 255);\n"
 "}\n"
 "QPushButton:hover{\n"
 "    background-color: rgb(0, 104, 156);\n"
+"}\n"
+"QPushButton:text{\n"
+"    padding-left: 50px\n"
 "}")
         self.left_side_menu.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.left_side_menu.setFrameShadow(QtWidgets.QFrame.Raised)
         self.left_side_menu.setObjectName("left_side_menu")
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.left_side_menu)
-        self.verticalLayout_2.setContentsMargins(7, 0, 0, 0)
+        self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout_2.setSpacing(0)
         self.verticalLayout_2.setObjectName("verticalLayout_2")
         self.left_menu_top_buttons = QtWidgets.QFrame(self.left_side_menu)
+        self.left_menu_top_buttons.setMinimumSize(QtCore.QSize(50, 0))
+        self.left_menu_top_buttons.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        self.left_menu_top_buttons.setStyleSheet("")
         self.left_menu_top_buttons.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.left_menu_top_buttons.setFrameShadow(QtWidgets.QFrame.Raised)
         self.left_menu_top_buttons.setObjectName("left_menu_top_buttons")
@@ -173,33 +175,31 @@ class Ui_MainWindow(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.sensors_button.sizePolicy().hasHeightForWidth())
         self.sensors_button.setSizePolicy(sizePolicy)
-        self.sensors_button.setMinimumSize(QtCore.QSize(100, 0))
+        self.sensors_button.setMinimumSize(QtCore.QSize(150, 50))
+        self.sensors_button.setMaximumSize(QtCore.QSize(100, 16777215))
         font = QtGui.QFont()
         font.setKerning(False)
         self.sensors_button.setFont(font)
         self.sensors_button.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.sensors_button.setStyleSheet("background-image: url(:/icons/icons/cil-rss.png);\n"
 "background-repeat: none;\n"
-"padding-left: 50px;\n"
 "background-position: center left;\n"
 "")
         self.sensors_button.setDefault(False)
         self.sensors_button.setObjectName("sensors_button")
         self.formLayout.setWidget(0, QtWidgets.QFormLayout.SpanningRole, self.sensors_button)
         self.accounts_button = QtWidgets.QPushButton(self.left_menu_top_buttons)
-        self.accounts_button.setMinimumSize(QtCore.QSize(100, 0))
+        self.accounts_button.setMinimumSize(QtCore.QSize(150, 50))
         self.accounts_button.setStyleSheet("background-image: url(:/icons/icons/cil-user.png);\n"
 "background-repeat: none;\n"
-"padding-left: 50px;\n"
 "background-position: center left;")
         self.accounts_button.setObjectName("accounts_button")
         self.formLayout.setWidget(1, QtWidgets.QFormLayout.SpanningRole, self.accounts_button)
         self.verticalLayout_2.addWidget(self.left_menu_top_buttons)
         self.settings_button = QtWidgets.QPushButton(self.left_side_menu)
-        self.settings_button.setMinimumSize(QtCore.QSize(100, 0))
+        self.settings_button.setMinimumSize(QtCore.QSize(150, 50))
         self.settings_button.setStyleSheet("background-image: url(:/icons/icons/cil-settings.png);\n"
 "background-repeat: none;\n"
-"padding-left: 50px;\n"
 "background-position: center left;")
         self.settings_button.setObjectName("settings_button")
         self.verticalLayout_2.addWidget(self.settings_button)
@@ -319,7 +319,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_8.setObjectName("verticalLayout_8")
         self.sensor1_details_frame = QtWidgets.QFrame(self.sensor1_body)
         self.sensor1_details_frame.setMaximumSize(QtCore.QSize(16777215, 50))
-        self.sensor1_details_frame.setStyleSheet("background-color: rgb(34, 34, 34);")
+        self.sensor1_details_frame.setStyleSheet("")
         self.sensor1_details_frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.sensor1_details_frame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.sensor1_details_frame.setObjectName("sensor1_details_frame")
@@ -328,8 +328,17 @@ class Ui_MainWindow(object):
         self.horizontalLayout_6.setSpacing(6)
         self.horizontalLayout_6.setObjectName("horizontalLayout_6")
         self.sensor1_temp_frame = QtWidgets.QFrame(self.sensor1_details_frame)
-        self.sensor1_temp_frame.setStyleSheet("background-color: rgb(23, 37, 83);\n"
-"border-radius: 5px;")
+        self.sensor1_temp_frame.setStyleSheet("QFrame{\n"
+"background-color: rgb(23, 37, 83);\n"
+"border-radius: 5px;\n"
+"}\n"
+"QPushButton{\n"
+"background-color: rgb(23, 37, 83);\n"
+"}\n"
+"QPushButton:hover{\n"
+"    background-color: rgb(0, 104, 156);\n"
+"    border-radius: 5px;\n"
+"}")
         self.sensor1_temp_frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.sensor1_temp_frame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.sensor1_temp_frame.setObjectName("sensor1_temp_frame")
@@ -337,20 +346,41 @@ class Ui_MainWindow(object):
         self.horizontalLayout_9.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_9.setSpacing(0)
         self.horizontalLayout_9.setObjectName("horizontalLayout_9")
-        self.label_3 = QtWidgets.QLabel(self.sensor1_temp_frame)
-        self.label_3.setMinimumSize(QtCore.QSize(0, 0))
-        self.label_3.setStyleSheet("color: rgb(255, 255, 255);")
-        self.label_3.setObjectName("label_3")
-        self.horizontalLayout_9.addWidget(self.label_3)
-        self.label_5 = QtWidgets.QLabel(self.sensor1_temp_frame)
-        self.label_5.setStyleSheet("color: rgb(255, 255, 255);")
-        self.label_5.setText("")
-        self.label_5.setObjectName("label_5")
-        self.horizontalLayout_9.addWidget(self.label_5)
+        self.sensor1_temp_label = QtWidgets.QLabel(self.sensor1_temp_frame)
+        self.sensor1_temp_label.setMinimumSize(QtCore.QSize(0, 0))
+        self.sensor1_temp_label.setStyleSheet("color: rgb(255, 255, 255);")
+        self.sensor1_temp_label.setObjectName("sensor1_temp_label")
+        self.horizontalLayout_9.addWidget(self.sensor1_temp_label)
+        self.sensor1_temp_value = QtWidgets.QLabel(self.sensor1_temp_frame)
+        self.sensor1_temp_value.setStyleSheet("color: rgb(255, 255, 255);")
+        self.sensor1_temp_value.setText("")
+        self.sensor1_temp_value.setObjectName("sensor1_temp_value")
+        self.horizontalLayout_9.addWidget(self.sensor1_temp_value)
+        self.sensor1_temp_trend_btn = QtWidgets.QPushButton(self.sensor1_temp_frame)
+        self.sensor1_temp_trend_btn.setMaximumSize(QtCore.QSize(32, 32))
+        self.sensor1_temp_trend_btn.setStyleSheet("background:hover{\n"
+"    \n"
+"}")
+        self.sensor1_temp_trend_btn.setText("")
+        icon6 = QtGui.QIcon()
+        icon6.addPixmap(QtGui.QPixmap(":/icons/icons/cil-chart-line.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.sensor1_temp_trend_btn.setIcon(icon6)
+        self.sensor1_temp_trend_btn.setIconSize(QtCore.QSize(32, 32))
+        self.sensor1_temp_trend_btn.setObjectName("sensor1_temp_trend_btn")
+        self.horizontalLayout_9.addWidget(self.sensor1_temp_trend_btn)
         self.horizontalLayout_6.addWidget(self.sensor1_temp_frame)
         self.sensor1_humidity_frame = QtWidgets.QFrame(self.sensor1_details_frame)
-        self.sensor1_humidity_frame.setStyleSheet("background-color: rgb(23, 37, 83);\n"
-"border-radius: 5px;")
+        self.sensor1_humidity_frame.setStyleSheet("QFrame{\n"
+"background-color: rgb(23, 37, 83);\n"
+"border-radius: 5px;\n"
+"}\n"
+"QPushButton{\n"
+"background-color: rgb(23, 37, 83);\n"
+"}\n"
+"QPushButton:hover{\n"
+"    background-color: rgb(0, 104, 156);\n"
+"    border-radius: 5px;\n"
+"}")
         self.sensor1_humidity_frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.sensor1_humidity_frame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.sensor1_humidity_frame.setObjectName("sensor1_humidity_frame")
@@ -358,20 +388,37 @@ class Ui_MainWindow(object):
         self.horizontalLayout_10.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_10.setSpacing(0)
         self.horizontalLayout_10.setObjectName("horizontalLayout_10")
-        self.label_6 = QtWidgets.QLabel(self.sensor1_humidity_frame)
-        self.label_6.setMaximumSize(QtCore.QSize(46, 16777215))
-        self.label_6.setStyleSheet("color: rgb(255, 255, 255);")
-        self.label_6.setObjectName("label_6")
-        self.horizontalLayout_10.addWidget(self.label_6)
-        self.label_7 = QtWidgets.QLabel(self.sensor1_humidity_frame)
-        self.label_7.setStyleSheet("color: rgb(255, 255, 255);")
-        self.label_7.setText("")
-        self.label_7.setObjectName("label_7")
-        self.horizontalLayout_10.addWidget(self.label_7)
+        self.sensor1_humidity_label = QtWidgets.QLabel(self.sensor1_humidity_frame)
+        self.sensor1_humidity_label.setMaximumSize(QtCore.QSize(46, 16777215))
+        self.sensor1_humidity_label.setStyleSheet("color: rgb(255, 255, 255);")
+        self.sensor1_humidity_label.setObjectName("sensor1_humidity_label")
+        self.horizontalLayout_10.addWidget(self.sensor1_humidity_label)
+        self.sensor1_humidity_value = QtWidgets.QLabel(self.sensor1_humidity_frame)
+        self.sensor1_humidity_value.setStyleSheet("color: rgb(255, 255, 255);")
+        self.sensor1_humidity_value.setText("")
+        self.sensor1_humidity_value.setObjectName("sensor1_humidity_value")
+        self.horizontalLayout_10.addWidget(self.sensor1_humidity_value)
+        self.sensor1_humidity_trend_btn = QtWidgets.QPushButton(self.sensor1_humidity_frame)
+        self.sensor1_humidity_trend_btn.setMaximumSize(QtCore.QSize(32, 32))
+        self.sensor1_humidity_trend_btn.setStyleSheet("")
+        self.sensor1_humidity_trend_btn.setText("")
+        self.sensor1_humidity_trend_btn.setIcon(icon6)
+        self.sensor1_humidity_trend_btn.setIconSize(QtCore.QSize(32, 32))
+        self.sensor1_humidity_trend_btn.setObjectName("sensor1_humidity_trend_btn")
+        self.horizontalLayout_10.addWidget(self.sensor1_humidity_trend_btn)
         self.horizontalLayout_6.addWidget(self.sensor1_humidity_frame)
         self.sensor1_CO2_frame = QtWidgets.QFrame(self.sensor1_details_frame)
-        self.sensor1_CO2_frame.setStyleSheet("background-color: rgb(23, 37, 83);\n"
-"border-radius: 5px;")
+        self.sensor1_CO2_frame.setStyleSheet("QFrame{\n"
+"background-color: rgb(23, 37, 83);\n"
+"border-radius: 5px;\n"
+"}\n"
+"QPushButton{\n"
+"background-color: rgb(23, 37, 83);\n"
+"}\n"
+"QPushButton:hover{\n"
+"    background-color: rgb(0, 104, 156);\n"
+"    border-radius: 5px;\n"
+"}")
         self.sensor1_CO2_frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.sensor1_CO2_frame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.sensor1_CO2_frame.setObjectName("sensor1_CO2_frame")
@@ -379,16 +426,24 @@ class Ui_MainWindow(object):
         self.horizontalLayout_11.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_11.setSpacing(0)
         self.horizontalLayout_11.setObjectName("horizontalLayout_11")
-        self.label_8 = QtWidgets.QLabel(self.sensor1_CO2_frame)
-        self.label_8.setMaximumSize(QtCore.QSize(30, 16777215))
-        self.label_8.setStyleSheet("color: rgb(255, 255, 255);")
-        self.label_8.setObjectName("label_8")
-        self.horizontalLayout_11.addWidget(self.label_8)
-        self.label_9 = QtWidgets.QLabel(self.sensor1_CO2_frame)
-        self.label_9.setStyleSheet("color: rgb(255, 255, 255);")
-        self.label_9.setText("")
-        self.label_9.setObjectName("label_9")
-        self.horizontalLayout_11.addWidget(self.label_9)
+        self.sensor1_co2_label = QtWidgets.QLabel(self.sensor1_CO2_frame)
+        self.sensor1_co2_label.setMaximumSize(QtCore.QSize(30, 16777215))
+        self.sensor1_co2_label.setStyleSheet("color: rgb(255, 255, 255);")
+        self.sensor1_co2_label.setObjectName("sensor1_co2_label")
+        self.horizontalLayout_11.addWidget(self.sensor1_co2_label)
+        self.sensor1_co2_value = QtWidgets.QLabel(self.sensor1_CO2_frame)
+        self.sensor1_co2_value.setStyleSheet("color: rgb(255, 255, 255);")
+        self.sensor1_co2_value.setText("")
+        self.sensor1_co2_value.setObjectName("sensor1_co2_value")
+        self.horizontalLayout_11.addWidget(self.sensor1_co2_value)
+        self.sensor1_co2_trend_btn = QtWidgets.QPushButton(self.sensor1_CO2_frame)
+        self.sensor1_co2_trend_btn.setMaximumSize(QtCore.QSize(32, 32))
+        self.sensor1_co2_trend_btn.setStyleSheet("")
+        self.sensor1_co2_trend_btn.setText("")
+        self.sensor1_co2_trend_btn.setIcon(icon6)
+        self.sensor1_co2_trend_btn.setIconSize(QtCore.QSize(32, 32))
+        self.sensor1_co2_trend_btn.setObjectName("sensor1_co2_trend_btn")
+        self.horizontalLayout_11.addWidget(self.sensor1_co2_trend_btn)
         self.horizontalLayout_6.addWidget(self.sensor1_CO2_frame)
         self.sensor1_status_frame = QtWidgets.QFrame(self.sensor1_details_frame)
         self.sensor1_status_frame.setStyleSheet("background-color: rgb(23, 37, 83);\n"
@@ -400,25 +455,23 @@ class Ui_MainWindow(object):
         self.horizontalLayout_12.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_12.setSpacing(0)
         self.horizontalLayout_12.setObjectName("horizontalLayout_12")
-        self.label_10 = QtWidgets.QLabel(self.sensor1_status_frame)
-        self.label_10.setMaximumSize(QtCore.QSize(35, 16777215))
-        self.label_10.setStyleSheet("color: rgb(255, 255, 255);")
-        self.label_10.setObjectName("label_10")
-        self.horizontalLayout_12.addWidget(self.label_10)
-        self.label_11 = QtWidgets.QLabel(self.sensor1_status_frame)
-        self.label_11.setStyleSheet("color: rgb(255, 255, 255);")
-        self.label_11.setText("")
-        self.label_11.setObjectName("label_11")
-        self.horizontalLayout_12.addWidget(self.label_11)
+        self.sensor1_status_label = QtWidgets.QLabel(self.sensor1_status_frame)
+        self.sensor1_status_label.setMaximumSize(QtCore.QSize(35, 16777215))
+        self.sensor1_status_label.setStyleSheet("color: rgb(255, 255, 255);")
+        self.sensor1_status_label.setObjectName("sensor1_status_label")
+        self.horizontalLayout_12.addWidget(self.sensor1_status_label)
+        self.sensor1_status_value = QtWidgets.QLabel(self.sensor1_status_frame)
+        self.sensor1_status_value.setStyleSheet("color: rgb(255, 255, 255);")
+        self.sensor1_status_value.setText("")
+        self.sensor1_status_value.setObjectName("sensor1_status_value")
+        self.horizontalLayout_12.addWidget(self.sensor1_status_value)
         self.horizontalLayout_6.addWidget(self.sensor1_status_frame)
         self.verticalLayout_8.addWidget(self.sensor1_details_frame)
-        self.sensor1_data = QtWidgets.QFrame(self.sensor1_body)
-        self.sensor1_data.setStyleSheet("background-color: rgb(34, 34, 34);\n"
-"border-radius: 5px;")
-        self.sensor1_data.setFrameShape(QtWidgets.QFrame.NoFrame)
-        self.sensor1_data.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.sensor1_data.setObjectName("sensor1_data")
-        self.verticalLayout_8.addWidget(self.sensor1_data)
+        self.sensor_trend_frame = QtWidgets.QFrame(self.sensor1_body)
+        self.sensor_trend_frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.sensor_trend_frame.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.sensor_trend_frame.setObjectName("sensor_trend_frame")
+        self.verticalLayout_8.addWidget(self.sensor_trend_frame)
         self.verticalLayout_6.addWidget(self.sensor1_body)
         self.verticalLayout_7.addWidget(self.sensor1_main_frame)
         self.sensors_stacked_widget.addWidget(self.sensor1_page)
@@ -506,8 +559,18 @@ class Ui_MainWindow(object):
         self.horizontalLayout_14.setSpacing(6)
         self.horizontalLayout_14.setObjectName("horizontalLayout_14")
         self.sensor2_temp_frame = QtWidgets.QFrame(self.sensor2_details_frame)
-        self.sensor2_temp_frame.setStyleSheet("background-color: rgb(23, 37, 83);\n"
-"border-radius: 5px;")
+        self.sensor2_temp_frame.setMaximumSize(QtCore.QSize(16777215, 1677215))
+        self.sensor2_temp_frame.setStyleSheet("QFrame{\n"
+"background-color: rgb(23, 37, 83);\n"
+"border-radius: 5px;\n"
+"}\n"
+"QPushButton{\n"
+"background-color: rgb(23, 37, 83);\n"
+"}\n"
+"QPushButton:hover{\n"
+"    background-color: rgb(0, 104, 156);\n"
+"    border-radius: 5px;\n"
+"}")
         self.sensor2_temp_frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.sensor2_temp_frame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.sensor2_temp_frame.setObjectName("sensor2_temp_frame")
@@ -515,20 +578,36 @@ class Ui_MainWindow(object):
         self.horizontalLayout_15.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_15.setSpacing(0)
         self.horizontalLayout_15.setObjectName("horizontalLayout_15")
-        self.label_12 = QtWidgets.QLabel(self.sensor2_temp_frame)
-        self.label_12.setMinimumSize(QtCore.QSize(0, 0))
-        self.label_12.setStyleSheet("color: rgb(255, 255, 255);")
-        self.label_12.setObjectName("label_12")
-        self.horizontalLayout_15.addWidget(self.label_12)
-        self.label_13 = QtWidgets.QLabel(self.sensor2_temp_frame)
-        self.label_13.setStyleSheet("color: rgb(255, 255, 255);")
-        self.label_13.setText("")
-        self.label_13.setObjectName("label_13")
-        self.horizontalLayout_15.addWidget(self.label_13)
+        self.sensor2_temp_label = QtWidgets.QLabel(self.sensor2_temp_frame)
+        self.sensor2_temp_label.setMinimumSize(QtCore.QSize(0, 0))
+        self.sensor2_temp_label.setStyleSheet("color: rgb(255, 255, 255);")
+        self.sensor2_temp_label.setObjectName("sensor2_temp_label")
+        self.horizontalLayout_15.addWidget(self.sensor2_temp_label)
+        self.sensor2_temp_value = QtWidgets.QLabel(self.sensor2_temp_frame)
+        self.sensor2_temp_value.setStyleSheet("color: rgb(255, 255, 255);")
+        self.sensor2_temp_value.setText("")
+        self.sensor2_temp_value.setObjectName("sensor2_temp_value")
+        self.horizontalLayout_15.addWidget(self.sensor2_temp_value)
+        self.sensor2_temp_trend_btn = QtWidgets.QPushButton(self.sensor2_temp_frame)
+        self.sensor2_temp_trend_btn.setMaximumSize(QtCore.QSize(32, 32))
+        self.sensor2_temp_trend_btn.setText("")
+        self.sensor2_temp_trend_btn.setIcon(icon6)
+        self.sensor2_temp_trend_btn.setIconSize(QtCore.QSize(32, 32))
+        self.sensor2_temp_trend_btn.setObjectName("sensor2_temp_trend_btn")
+        self.horizontalLayout_15.addWidget(self.sensor2_temp_trend_btn)
         self.horizontalLayout_14.addWidget(self.sensor2_temp_frame)
         self.sensor2_humidity_frame = QtWidgets.QFrame(self.sensor2_details_frame)
-        self.sensor2_humidity_frame.setStyleSheet("background-color: rgb(23, 37, 83);\n"
-"border-radius: 5px;")
+        self.sensor2_humidity_frame.setStyleSheet("QFrame{\n"
+"background-color: rgb(23, 37, 83);\n"
+"border-radius: 5px;\n"
+"}\n"
+"QPushButton{\n"
+"background-color: rgb(23, 37, 83);\n"
+"}\n"
+"QPushButton:hover{\n"
+"    background-color: rgb(0, 104, 156);\n"
+"    border-radius: 5px;\n"
+"}")
         self.sensor2_humidity_frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.sensor2_humidity_frame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.sensor2_humidity_frame.setObjectName("sensor2_humidity_frame")
@@ -536,20 +615,36 @@ class Ui_MainWindow(object):
         self.horizontalLayout_16.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_16.setSpacing(0)
         self.horizontalLayout_16.setObjectName("horizontalLayout_16")
-        self.label_14 = QtWidgets.QLabel(self.sensor2_humidity_frame)
-        self.label_14.setMaximumSize(QtCore.QSize(46, 16777215))
-        self.label_14.setStyleSheet("color: rgb(255, 255, 255);")
-        self.label_14.setObjectName("label_14")
-        self.horizontalLayout_16.addWidget(self.label_14)
-        self.label_15 = QtWidgets.QLabel(self.sensor2_humidity_frame)
-        self.label_15.setStyleSheet("color: rgb(255, 255, 255);")
-        self.label_15.setText("")
-        self.label_15.setObjectName("label_15")
-        self.horizontalLayout_16.addWidget(self.label_15)
+        self.sensor2_humidity_label = QtWidgets.QLabel(self.sensor2_humidity_frame)
+        self.sensor2_humidity_label.setMaximumSize(QtCore.QSize(46, 16777215))
+        self.sensor2_humidity_label.setStyleSheet("color: rgb(255, 255, 255);")
+        self.sensor2_humidity_label.setObjectName("sensor2_humidity_label")
+        self.horizontalLayout_16.addWidget(self.sensor2_humidity_label)
+        self.sensor2_humidity_value = QtWidgets.QLabel(self.sensor2_humidity_frame)
+        self.sensor2_humidity_value.setStyleSheet("color: rgb(255, 255, 255);")
+        self.sensor2_humidity_value.setText("")
+        self.sensor2_humidity_value.setObjectName("sensor2_humidity_value")
+        self.horizontalLayout_16.addWidget(self.sensor2_humidity_value)
+        self.sensor2_humidity_trend_btn = QtWidgets.QPushButton(self.sensor2_humidity_frame)
+        self.sensor2_humidity_trend_btn.setMaximumSize(QtCore.QSize(32, 32))
+        self.sensor2_humidity_trend_btn.setText("")
+        self.sensor2_humidity_trend_btn.setIcon(icon6)
+        self.sensor2_humidity_trend_btn.setIconSize(QtCore.QSize(32, 32))
+        self.sensor2_humidity_trend_btn.setObjectName("sensor2_humidity_trend_btn")
+        self.horizontalLayout_16.addWidget(self.sensor2_humidity_trend_btn)
         self.horizontalLayout_14.addWidget(self.sensor2_humidity_frame)
         self.sensor2_CO2_frame = QtWidgets.QFrame(self.sensor2_details_frame)
-        self.sensor2_CO2_frame.setStyleSheet("background-color: rgb(23, 37, 83);\n"
-"border-radius: 5px;")
+        self.sensor2_CO2_frame.setStyleSheet("QFrame{\n"
+"background-color: rgb(23, 37, 83);\n"
+"border-radius: 5px;\n"
+"}\n"
+"QPushButton{\n"
+"background-color: rgb(23, 37, 83);\n"
+"}\n"
+"QPushButton:hover{\n"
+"    background-color: rgb(0, 104, 156);\n"
+"    border-radius: 5px;\n"
+"}")
         self.sensor2_CO2_frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.sensor2_CO2_frame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.sensor2_CO2_frame.setObjectName("sensor2_CO2_frame")
@@ -557,20 +652,36 @@ class Ui_MainWindow(object):
         self.horizontalLayout_17.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_17.setSpacing(0)
         self.horizontalLayout_17.setObjectName("horizontalLayout_17")
-        self.label_16 = QtWidgets.QLabel(self.sensor2_CO2_frame)
-        self.label_16.setMaximumSize(QtCore.QSize(30, 16777215))
-        self.label_16.setStyleSheet("color: rgb(255, 255, 255);")
-        self.label_16.setObjectName("label_16")
-        self.horizontalLayout_17.addWidget(self.label_16)
-        self.label_17 = QtWidgets.QLabel(self.sensor2_CO2_frame)
-        self.label_17.setStyleSheet("color: rgb(255, 255, 255);")
-        self.label_17.setText("")
-        self.label_17.setObjectName("label_17")
-        self.horizontalLayout_17.addWidget(self.label_17)
+        self.sensor2_co2_label = QtWidgets.QLabel(self.sensor2_CO2_frame)
+        self.sensor2_co2_label.setMaximumSize(QtCore.QSize(30, 16777215))
+        self.sensor2_co2_label.setStyleSheet("color: rgb(255, 255, 255);")
+        self.sensor2_co2_label.setObjectName("sensor2_co2_label")
+        self.horizontalLayout_17.addWidget(self.sensor2_co2_label)
+        self.sensor2_co2_value = QtWidgets.QLabel(self.sensor2_CO2_frame)
+        self.sensor2_co2_value.setStyleSheet("color: rgb(255, 255, 255);")
+        self.sensor2_co2_value.setText("")
+        self.sensor2_co2_value.setObjectName("sensor2_co2_value")
+        self.horizontalLayout_17.addWidget(self.sensor2_co2_value)
+        self.sensor2_co2_trend_btn = QtWidgets.QPushButton(self.sensor2_CO2_frame)
+        self.sensor2_co2_trend_btn.setMaximumSize(QtCore.QSize(32, 32))
+        self.sensor2_co2_trend_btn.setText("")
+        self.sensor2_co2_trend_btn.setIcon(icon6)
+        self.sensor2_co2_trend_btn.setIconSize(QtCore.QSize(32, 32))
+        self.sensor2_co2_trend_btn.setObjectName("sensor2_co2_trend_btn")
+        self.horizontalLayout_17.addWidget(self.sensor2_co2_trend_btn)
         self.horizontalLayout_14.addWidget(self.sensor2_CO2_frame)
         self.sensor2_status_frame = QtWidgets.QFrame(self.sensor2_details_frame)
-        self.sensor2_status_frame.setStyleSheet("background-color: rgb(23, 37, 83);\n"
-"border-radius: 5px;")
+        self.sensor2_status_frame.setStyleSheet("QFrame{\n"
+"background-color: rgb(23, 37, 83);\n"
+"border-radius: 5px;\n"
+"}\n"
+"QPushButton{\n"
+"background-color: rgb(23, 37, 83);\n"
+"}\n"
+"QPushButton:hover{\n"
+"    background-color: rgb(0, 104, 156);\n"
+"    border-radius: 5px;\n"
+"}")
         self.sensor2_status_frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.sensor2_status_frame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.sensor2_status_frame.setObjectName("sensor2_status_frame")
@@ -578,16 +689,16 @@ class Ui_MainWindow(object):
         self.horizontalLayout_18.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_18.setSpacing(0)
         self.horizontalLayout_18.setObjectName("horizontalLayout_18")
-        self.label_18 = QtWidgets.QLabel(self.sensor2_status_frame)
-        self.label_18.setMaximumSize(QtCore.QSize(35, 16777215))
-        self.label_18.setStyleSheet("color: rgb(255, 255, 255);")
-        self.label_18.setObjectName("label_18")
-        self.horizontalLayout_18.addWidget(self.label_18)
-        self.label_19 = QtWidgets.QLabel(self.sensor2_status_frame)
-        self.label_19.setStyleSheet("color: rgb(255, 255, 255);")
-        self.label_19.setText("")
-        self.label_19.setObjectName("label_19")
-        self.horizontalLayout_18.addWidget(self.label_19)
+        self.sensor2_status_label = QtWidgets.QLabel(self.sensor2_status_frame)
+        self.sensor2_status_label.setMaximumSize(QtCore.QSize(35, 16777215))
+        self.sensor2_status_label.setStyleSheet("color: rgb(255, 255, 255);")
+        self.sensor2_status_label.setObjectName("sensor2_status_label")
+        self.horizontalLayout_18.addWidget(self.sensor2_status_label)
+        self.sensor2_status_value = QtWidgets.QLabel(self.sensor2_status_frame)
+        self.sensor2_status_value.setStyleSheet("color: rgb(255, 255, 255);")
+        self.sensor2_status_value.setText("")
+        self.sensor2_status_value.setObjectName("sensor2_status_value")
+        self.horizontalLayout_18.addWidget(self.sensor2_status_value)
         self.horizontalLayout_14.addWidget(self.sensor2_status_frame)
         self.verticalLayout_10.addWidget(self.sensor2_details_frame)
         self.sensor2_data = QtWidgets.QFrame(self.sensor2_body)
@@ -684,8 +795,17 @@ class Ui_MainWindow(object):
         self.horizontalLayout_21.setSpacing(6)
         self.horizontalLayout_21.setObjectName("horizontalLayout_21")
         self.sensor3_temp_frame = QtWidgets.QFrame(self.sensor3_details_frame)
-        self.sensor3_temp_frame.setStyleSheet("background-color: rgb(23, 37, 83);\n"
-"border-radius: 5px;")
+        self.sensor3_temp_frame.setStyleSheet("QFrame{\n"
+"background-color: rgb(23, 37, 83);\n"
+"border-radius: 5px;\n"
+"}\n"
+"QPushButton{\n"
+"background-color: rgb(23, 37, 83);\n"
+"}\n"
+"QPushButton:hover{\n"
+"    background-color: rgb(0, 104, 156);\n"
+"    border-radius: 5px;\n"
+"}")
         self.sensor3_temp_frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.sensor3_temp_frame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.sensor3_temp_frame.setObjectName("sensor3_temp_frame")
@@ -693,20 +813,36 @@ class Ui_MainWindow(object):
         self.horizontalLayout_22.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_22.setSpacing(0)
         self.horizontalLayout_22.setObjectName("horizontalLayout_22")
-        self.label_20 = QtWidgets.QLabel(self.sensor3_temp_frame)
-        self.label_20.setMinimumSize(QtCore.QSize(0, 0))
-        self.label_20.setStyleSheet("color: rgb(255, 255, 255);")
-        self.label_20.setObjectName("label_20")
-        self.horizontalLayout_22.addWidget(self.label_20)
-        self.label_21 = QtWidgets.QLabel(self.sensor3_temp_frame)
-        self.label_21.setStyleSheet("color: rgb(255, 255, 255);")
-        self.label_21.setText("")
-        self.label_21.setObjectName("label_21")
-        self.horizontalLayout_22.addWidget(self.label_21)
+        self.sensor3_temp_label = QtWidgets.QLabel(self.sensor3_temp_frame)
+        self.sensor3_temp_label.setMinimumSize(QtCore.QSize(0, 0))
+        self.sensor3_temp_label.setStyleSheet("color: rgb(255, 255, 255);")
+        self.sensor3_temp_label.setObjectName("sensor3_temp_label")
+        self.horizontalLayout_22.addWidget(self.sensor3_temp_label)
+        self.sensor3_temp_value = QtWidgets.QLabel(self.sensor3_temp_frame)
+        self.sensor3_temp_value.setStyleSheet("color: rgb(255, 255, 255);")
+        self.sensor3_temp_value.setText("")
+        self.sensor3_temp_value.setObjectName("sensor3_temp_value")
+        self.horizontalLayout_22.addWidget(self.sensor3_temp_value)
+        self.sensor3_temp_trend_btn = QtWidgets.QPushButton(self.sensor3_temp_frame)
+        self.sensor3_temp_trend_btn.setMaximumSize(QtCore.QSize(32, 32))
+        self.sensor3_temp_trend_btn.setText("")
+        self.sensor3_temp_trend_btn.setIcon(icon6)
+        self.sensor3_temp_trend_btn.setIconSize(QtCore.QSize(32, 32))
+        self.sensor3_temp_trend_btn.setObjectName("sensor3_temp_trend_btn")
+        self.horizontalLayout_22.addWidget(self.sensor3_temp_trend_btn)
         self.horizontalLayout_21.addWidget(self.sensor3_temp_frame)
         self.sensor3_humidity_frame = QtWidgets.QFrame(self.sensor3_details_frame)
-        self.sensor3_humidity_frame.setStyleSheet("background-color: rgb(23, 37, 83);\n"
-"border-radius: 5px;")
+        self.sensor3_humidity_frame.setStyleSheet("QFrame{\n"
+"background-color: rgb(23, 37, 83);\n"
+"border-radius: 5px;\n"
+"}\n"
+"QPushButton{\n"
+"background-color: rgb(23, 37, 83);\n"
+"}\n"
+"QPushButton:hover{\n"
+"    background-color: rgb(0, 104, 156);\n"
+"    border-radius: 5px;\n"
+"}")
         self.sensor3_humidity_frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.sensor3_humidity_frame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.sensor3_humidity_frame.setObjectName("sensor3_humidity_frame")
@@ -714,20 +850,36 @@ class Ui_MainWindow(object):
         self.horizontalLayout_23.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_23.setSpacing(0)
         self.horizontalLayout_23.setObjectName("horizontalLayout_23")
-        self.label_22 = QtWidgets.QLabel(self.sensor3_humidity_frame)
-        self.label_22.setMaximumSize(QtCore.QSize(46, 16777215))
-        self.label_22.setStyleSheet("color: rgb(255, 255, 255);")
-        self.label_22.setObjectName("label_22")
-        self.horizontalLayout_23.addWidget(self.label_22)
-        self.label_23 = QtWidgets.QLabel(self.sensor3_humidity_frame)
-        self.label_23.setStyleSheet("color: rgb(255, 255, 255);")
-        self.label_23.setText("")
-        self.label_23.setObjectName("label_23")
-        self.horizontalLayout_23.addWidget(self.label_23)
+        self.sensor3_humidity_label = QtWidgets.QLabel(self.sensor3_humidity_frame)
+        self.sensor3_humidity_label.setMaximumSize(QtCore.QSize(46, 16777215))
+        self.sensor3_humidity_label.setStyleSheet("color: rgb(255, 255, 255);")
+        self.sensor3_humidity_label.setObjectName("sensor3_humidity_label")
+        self.horizontalLayout_23.addWidget(self.sensor3_humidity_label)
+        self.sensor3_humidity_value = QtWidgets.QLabel(self.sensor3_humidity_frame)
+        self.sensor3_humidity_value.setStyleSheet("color: rgb(255, 255, 255);")
+        self.sensor3_humidity_value.setText("")
+        self.sensor3_humidity_value.setObjectName("sensor3_humidity_value")
+        self.horizontalLayout_23.addWidget(self.sensor3_humidity_value)
+        self.sensor3_humidity_trend_btn = QtWidgets.QPushButton(self.sensor3_humidity_frame)
+        self.sensor3_humidity_trend_btn.setMaximumSize(QtCore.QSize(32, 32))
+        self.sensor3_humidity_trend_btn.setText("")
+        self.sensor3_humidity_trend_btn.setIcon(icon6)
+        self.sensor3_humidity_trend_btn.setIconSize(QtCore.QSize(32, 32))
+        self.sensor3_humidity_trend_btn.setObjectName("sensor3_humidity_trend_btn")
+        self.horizontalLayout_23.addWidget(self.sensor3_humidity_trend_btn)
         self.horizontalLayout_21.addWidget(self.sensor3_humidity_frame)
         self.sensor3_CO2_frame = QtWidgets.QFrame(self.sensor3_details_frame)
-        self.sensor3_CO2_frame.setStyleSheet("background-color: rgb(23, 37, 83);\n"
-"border-radius: 5px;")
+        self.sensor3_CO2_frame.setStyleSheet("QFrame{\n"
+"background-color: rgb(23, 37, 83);\n"
+"border-radius: 5px;\n"
+"}\n"
+"QPushButton{\n"
+"background-color: rgb(23, 37, 83);\n"
+"}\n"
+"QPushButton:hover{\n"
+"    background-color: rgb(0, 104, 156);\n"
+"    border-radius: 5px;\n"
+"}")
         self.sensor3_CO2_frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.sensor3_CO2_frame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.sensor3_CO2_frame.setObjectName("sensor3_CO2_frame")
@@ -735,20 +887,36 @@ class Ui_MainWindow(object):
         self.horizontalLayout_24.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_24.setSpacing(0)
         self.horizontalLayout_24.setObjectName("horizontalLayout_24")
-        self.label_24 = QtWidgets.QLabel(self.sensor3_CO2_frame)
-        self.label_24.setMaximumSize(QtCore.QSize(30, 16777215))
-        self.label_24.setStyleSheet("color: rgb(255, 255, 255);")
-        self.label_24.setObjectName("label_24")
-        self.horizontalLayout_24.addWidget(self.label_24)
-        self.label_25 = QtWidgets.QLabel(self.sensor3_CO2_frame)
-        self.label_25.setStyleSheet("color: rgb(255, 255, 255);")
-        self.label_25.setText("")
-        self.label_25.setObjectName("label_25")
-        self.horizontalLayout_24.addWidget(self.label_25)
+        self.sensor3_co2_label = QtWidgets.QLabel(self.sensor3_CO2_frame)
+        self.sensor3_co2_label.setMaximumSize(QtCore.QSize(30, 16777215))
+        self.sensor3_co2_label.setStyleSheet("color: rgb(255, 255, 255);")
+        self.sensor3_co2_label.setObjectName("sensor3_co2_label")
+        self.horizontalLayout_24.addWidget(self.sensor3_co2_label)
+        self.sensor3_co2_value = QtWidgets.QLabel(self.sensor3_CO2_frame)
+        self.sensor3_co2_value.setStyleSheet("color: rgb(255, 255, 255);")
+        self.sensor3_co2_value.setText("")
+        self.sensor3_co2_value.setObjectName("sensor3_co2_value")
+        self.horizontalLayout_24.addWidget(self.sensor3_co2_value)
+        self.sensor3_co2_trend_btn = QtWidgets.QPushButton(self.sensor3_CO2_frame)
+        self.sensor3_co2_trend_btn.setMaximumSize(QtCore.QSize(32, 32))
+        self.sensor3_co2_trend_btn.setText("")
+        self.sensor3_co2_trend_btn.setIcon(icon6)
+        self.sensor3_co2_trend_btn.setIconSize(QtCore.QSize(32, 32))
+        self.sensor3_co2_trend_btn.setObjectName("sensor3_co2_trend_btn")
+        self.horizontalLayout_24.addWidget(self.sensor3_co2_trend_btn)
         self.horizontalLayout_21.addWidget(self.sensor3_CO2_frame)
         self.sensor3_status_frame = QtWidgets.QFrame(self.sensor3_details_frame)
-        self.sensor3_status_frame.setStyleSheet("background-color: rgb(23, 37, 83);\n"
-"border-radius: 5px;")
+        self.sensor3_status_frame.setStyleSheet("QFrame{\n"
+"background-color: rgb(23, 37, 83);\n"
+"border-radius: 5px;\n"
+"}\n"
+"QPushButton{\n"
+"background-color: rgb(23, 37, 83);\n"
+"}\n"
+"QPushButton:hover{\n"
+"    background-color: rgb(0, 104, 156);\n"
+"    border-radius: 5px;\n"
+"}")
         self.sensor3_status_frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.sensor3_status_frame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.sensor3_status_frame.setObjectName("sensor3_status_frame")
@@ -756,16 +924,16 @@ class Ui_MainWindow(object):
         self.horizontalLayout_25.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_25.setSpacing(0)
         self.horizontalLayout_25.setObjectName("horizontalLayout_25")
-        self.label_26 = QtWidgets.QLabel(self.sensor3_status_frame)
-        self.label_26.setMaximumSize(QtCore.QSize(35, 16777215))
-        self.label_26.setStyleSheet("color: rgb(255, 255, 255);")
-        self.label_26.setObjectName("label_26")
-        self.horizontalLayout_25.addWidget(self.label_26)
-        self.label_27 = QtWidgets.QLabel(self.sensor3_status_frame)
-        self.label_27.setStyleSheet("color: rgb(255, 255, 255);")
-        self.label_27.setText("")
-        self.label_27.setObjectName("label_27")
-        self.horizontalLayout_25.addWidget(self.label_27)
+        self.sensor3_status_label = QtWidgets.QLabel(self.sensor3_status_frame)
+        self.sensor3_status_label.setMaximumSize(QtCore.QSize(35, 16777215))
+        self.sensor3_status_label.setStyleSheet("color: rgb(255, 255, 255);")
+        self.sensor3_status_label.setObjectName("sensor3_status_label")
+        self.horizontalLayout_25.addWidget(self.sensor3_status_label)
+        self.sensor3_status_value = QtWidgets.QLabel(self.sensor3_status_frame)
+        self.sensor3_status_value.setStyleSheet("color: rgb(255, 255, 255);")
+        self.sensor3_status_value.setText("")
+        self.sensor3_status_value.setObjectName("sensor3_status_value")
+        self.horizontalLayout_25.addWidget(self.sensor3_status_value)
         self.horizontalLayout_21.addWidget(self.sensor3_status_frame)
         self.verticalLayout_12.addWidget(self.sensor3_details_frame)
         self.sensor3_data = QtWidgets.QFrame(self.sensor3_body)
@@ -862,8 +1030,17 @@ class Ui_MainWindow(object):
         self.horizontalLayout_27.setSpacing(6)
         self.horizontalLayout_27.setObjectName("horizontalLayout_27")
         self.sensor4_temp_frame = QtWidgets.QFrame(self.sensor4_details_frame)
-        self.sensor4_temp_frame.setStyleSheet("background-color: rgb(23, 37, 83);\n"
-"border-radius: 5px;")
+        self.sensor4_temp_frame.setStyleSheet("QFrame{\n"
+"background-color: rgb(23, 37, 83);\n"
+"border-radius: 5px;\n"
+"}\n"
+"QPushButton{\n"
+"background-color: rgb(23, 37, 83);\n"
+"}\n"
+"QPushButton:hover{\n"
+"    background-color: rgb(0, 104, 156);\n"
+"    border-radius: 5px;\n"
+"}")
         self.sensor4_temp_frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.sensor4_temp_frame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.sensor4_temp_frame.setObjectName("sensor4_temp_frame")
@@ -871,20 +1048,36 @@ class Ui_MainWindow(object):
         self.horizontalLayout_28.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_28.setSpacing(0)
         self.horizontalLayout_28.setObjectName("horizontalLayout_28")
-        self.label_28 = QtWidgets.QLabel(self.sensor4_temp_frame)
-        self.label_28.setMinimumSize(QtCore.QSize(0, 0))
-        self.label_28.setStyleSheet("color: rgb(255, 255, 255);")
-        self.label_28.setObjectName("label_28")
-        self.horizontalLayout_28.addWidget(self.label_28)
-        self.label_29 = QtWidgets.QLabel(self.sensor4_temp_frame)
-        self.label_29.setStyleSheet("color: rgb(255, 255, 255);")
-        self.label_29.setText("")
-        self.label_29.setObjectName("label_29")
-        self.horizontalLayout_28.addWidget(self.label_29)
+        self.sensor4_temp_label = QtWidgets.QLabel(self.sensor4_temp_frame)
+        self.sensor4_temp_label.setMinimumSize(QtCore.QSize(0, 0))
+        self.sensor4_temp_label.setStyleSheet("color: rgb(255, 255, 255);")
+        self.sensor4_temp_label.setObjectName("sensor4_temp_label")
+        self.horizontalLayout_28.addWidget(self.sensor4_temp_label)
+        self.sensor4_temp_value = QtWidgets.QLabel(self.sensor4_temp_frame)
+        self.sensor4_temp_value.setStyleSheet("color: rgb(255, 255, 255);")
+        self.sensor4_temp_value.setText("")
+        self.sensor4_temp_value.setObjectName("sensor4_temp_value")
+        self.horizontalLayout_28.addWidget(self.sensor4_temp_value)
+        self.sensor4_temp_trend_btn = QtWidgets.QPushButton(self.sensor4_temp_frame)
+        self.sensor4_temp_trend_btn.setMaximumSize(QtCore.QSize(32, 32))
+        self.sensor4_temp_trend_btn.setText("")
+        self.sensor4_temp_trend_btn.setIcon(icon6)
+        self.sensor4_temp_trend_btn.setIconSize(QtCore.QSize(32, 32))
+        self.sensor4_temp_trend_btn.setObjectName("sensor4_temp_trend_btn")
+        self.horizontalLayout_28.addWidget(self.sensor4_temp_trend_btn)
         self.horizontalLayout_27.addWidget(self.sensor4_temp_frame)
         self.sensor4_humidity_frame = QtWidgets.QFrame(self.sensor4_details_frame)
-        self.sensor4_humidity_frame.setStyleSheet("background-color: rgb(23, 37, 83);\n"
-"border-radius: 5px;")
+        self.sensor4_humidity_frame.setStyleSheet("QFrame{\n"
+"background-color: rgb(23, 37, 83);\n"
+"border-radius: 5px;\n"
+"}\n"
+"QPushButton{\n"
+"background-color: rgb(23, 37, 83);\n"
+"}\n"
+"QPushButton:hover{\n"
+"    background-color: rgb(0, 104, 156);\n"
+"    border-radius: 5px;\n"
+"}")
         self.sensor4_humidity_frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.sensor4_humidity_frame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.sensor4_humidity_frame.setObjectName("sensor4_humidity_frame")
@@ -892,20 +1085,36 @@ class Ui_MainWindow(object):
         self.horizontalLayout_29.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_29.setSpacing(0)
         self.horizontalLayout_29.setObjectName("horizontalLayout_29")
-        self.label_30 = QtWidgets.QLabel(self.sensor4_humidity_frame)
-        self.label_30.setMaximumSize(QtCore.QSize(46, 16777215))
-        self.label_30.setStyleSheet("color: rgb(255, 255, 255);")
-        self.label_30.setObjectName("label_30")
-        self.horizontalLayout_29.addWidget(self.label_30)
-        self.label_31 = QtWidgets.QLabel(self.sensor4_humidity_frame)
-        self.label_31.setStyleSheet("color: rgb(255, 255, 255);")
-        self.label_31.setText("")
-        self.label_31.setObjectName("label_31")
-        self.horizontalLayout_29.addWidget(self.label_31)
+        self.sensor4_humidity_label = QtWidgets.QLabel(self.sensor4_humidity_frame)
+        self.sensor4_humidity_label.setMaximumSize(QtCore.QSize(46, 16777215))
+        self.sensor4_humidity_label.setStyleSheet("color: rgb(255, 255, 255);")
+        self.sensor4_humidity_label.setObjectName("sensor4_humidity_label")
+        self.horizontalLayout_29.addWidget(self.sensor4_humidity_label)
+        self.sensor4_humidity_value = QtWidgets.QLabel(self.sensor4_humidity_frame)
+        self.sensor4_humidity_value.setStyleSheet("color: rgb(255, 255, 255);")
+        self.sensor4_humidity_value.setText("")
+        self.sensor4_humidity_value.setObjectName("sensor4_humidity_value")
+        self.horizontalLayout_29.addWidget(self.sensor4_humidity_value)
+        self.sensor4_humidity_trend_btn = QtWidgets.QPushButton(self.sensor4_humidity_frame)
+        self.sensor4_humidity_trend_btn.setMaximumSize(QtCore.QSize(32, 32))
+        self.sensor4_humidity_trend_btn.setText("")
+        self.sensor4_humidity_trend_btn.setIcon(icon6)
+        self.sensor4_humidity_trend_btn.setIconSize(QtCore.QSize(32, 32))
+        self.sensor4_humidity_trend_btn.setObjectName("sensor4_humidity_trend_btn")
+        self.horizontalLayout_29.addWidget(self.sensor4_humidity_trend_btn)
         self.horizontalLayout_27.addWidget(self.sensor4_humidity_frame)
         self.sensor4_CO2_frame = QtWidgets.QFrame(self.sensor4_details_frame)
-        self.sensor4_CO2_frame.setStyleSheet("background-color: rgb(23, 37, 83);\n"
-"border-radius: 5px;")
+        self.sensor4_CO2_frame.setStyleSheet("QFrame{\n"
+"background-color: rgb(23, 37, 83);\n"
+"border-radius: 5px;\n"
+"}\n"
+"QPushButton{\n"
+"background-color: rgb(23, 37, 83);\n"
+"}\n"
+"QPushButton:hover{\n"
+"    background-color: rgb(0, 104, 156);\n"
+"    border-radius: 5px;\n"
+"}")
         self.sensor4_CO2_frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.sensor4_CO2_frame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.sensor4_CO2_frame.setObjectName("sensor4_CO2_frame")
@@ -913,20 +1122,36 @@ class Ui_MainWindow(object):
         self.horizontalLayout_30.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_30.setSpacing(0)
         self.horizontalLayout_30.setObjectName("horizontalLayout_30")
-        self.label_32 = QtWidgets.QLabel(self.sensor4_CO2_frame)
-        self.label_32.setMaximumSize(QtCore.QSize(30, 16777215))
-        self.label_32.setStyleSheet("color: rgb(255, 255, 255);")
-        self.label_32.setObjectName("label_32")
-        self.horizontalLayout_30.addWidget(self.label_32)
-        self.label_33 = QtWidgets.QLabel(self.sensor4_CO2_frame)
-        self.label_33.setStyleSheet("color: rgb(255, 255, 255);")
-        self.label_33.setText("")
-        self.label_33.setObjectName("label_33")
-        self.horizontalLayout_30.addWidget(self.label_33)
+        self.sensor4_co2_label = QtWidgets.QLabel(self.sensor4_CO2_frame)
+        self.sensor4_co2_label.setMaximumSize(QtCore.QSize(30, 16777215))
+        self.sensor4_co2_label.setStyleSheet("color: rgb(255, 255, 255);")
+        self.sensor4_co2_label.setObjectName("sensor4_co2_label")
+        self.horizontalLayout_30.addWidget(self.sensor4_co2_label)
+        self.sensor4_co2_value = QtWidgets.QLabel(self.sensor4_CO2_frame)
+        self.sensor4_co2_value.setStyleSheet("color: rgb(255, 255, 255);")
+        self.sensor4_co2_value.setText("")
+        self.sensor4_co2_value.setObjectName("sensor4_co2_value")
+        self.horizontalLayout_30.addWidget(self.sensor4_co2_value)
+        self.sensor4_co2_trend_btn = QtWidgets.QPushButton(self.sensor4_CO2_frame)
+        self.sensor4_co2_trend_btn.setMaximumSize(QtCore.QSize(32, 32))
+        self.sensor4_co2_trend_btn.setText("")
+        self.sensor4_co2_trend_btn.setIcon(icon6)
+        self.sensor4_co2_trend_btn.setIconSize(QtCore.QSize(32, 32))
+        self.sensor4_co2_trend_btn.setObjectName("sensor4_co2_trend_btn")
+        self.horizontalLayout_30.addWidget(self.sensor4_co2_trend_btn)
         self.horizontalLayout_27.addWidget(self.sensor4_CO2_frame)
         self.sensor4_status_frame = QtWidgets.QFrame(self.sensor4_details_frame)
-        self.sensor4_status_frame.setStyleSheet("background-color: rgb(23, 37, 83);\n"
-"border-radius: 5px;")
+        self.sensor4_status_frame.setStyleSheet("QFrame{\n"
+"background-color: rgb(23, 37, 83);\n"
+"border-radius: 5px;\n"
+"}\n"
+"QPushButton{\n"
+"background-color: rgb(23, 37, 83);\n"
+"}\n"
+"QPushButton:hover{\n"
+"    background-color: rgb(0, 104, 156);\n"
+"    border-radius: 5px;\n"
+"}")
         self.sensor4_status_frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.sensor4_status_frame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.sensor4_status_frame.setObjectName("sensor4_status_frame")
@@ -934,16 +1159,16 @@ class Ui_MainWindow(object):
         self.horizontalLayout_31.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_31.setSpacing(0)
         self.horizontalLayout_31.setObjectName("horizontalLayout_31")
-        self.label_34 = QtWidgets.QLabel(self.sensor4_status_frame)
-        self.label_34.setMaximumSize(QtCore.QSize(35, 16777215))
-        self.label_34.setStyleSheet("color: rgb(255, 255, 255);")
-        self.label_34.setObjectName("label_34")
-        self.horizontalLayout_31.addWidget(self.label_34)
-        self.label_35 = QtWidgets.QLabel(self.sensor4_status_frame)
-        self.label_35.setStyleSheet("color: rgb(255, 255, 255);")
-        self.label_35.setText("")
-        self.label_35.setObjectName("label_35")
-        self.horizontalLayout_31.addWidget(self.label_35)
+        self.sensor4_status_label = QtWidgets.QLabel(self.sensor4_status_frame)
+        self.sensor4_status_label.setMaximumSize(QtCore.QSize(35, 16777215))
+        self.sensor4_status_label.setStyleSheet("color: rgb(255, 255, 255);")
+        self.sensor4_status_label.setObjectName("sensor4_status_label")
+        self.horizontalLayout_31.addWidget(self.sensor4_status_label)
+        self.sensor4_status_value = QtWidgets.QLabel(self.sensor4_status_frame)
+        self.sensor4_status_value.setStyleSheet("color: rgb(255, 255, 255);")
+        self.sensor4_status_value.setText("")
+        self.sensor4_status_value.setObjectName("sensor4_status_value")
+        self.horizontalLayout_31.addWidget(self.sensor4_status_value)
         self.horizontalLayout_27.addWidget(self.sensor4_status_frame)
         self.verticalLayout_15.addWidget(self.sensor4_details_frame)
         self.sensor4_data = QtWidgets.QFrame(self.sensor4_body)
@@ -994,8 +1219,8 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
-        self.stackedWidget.setCurrentIndex(2)
-        self.sensors_stacked_widget.setCurrentIndex(3)
+        self.stackedWidget.setCurrentIndex(0)
+        self.sensors_stacked_widget.setCurrentIndex(2)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -1005,25 +1230,25 @@ class Ui_MainWindow(object):
         self.accounts_button.setText(_translate("MainWindow", "ACCOUNT"))
         self.settings_button.setText(_translate("MainWindow", "SETTINGS"))
         self.sensor1_label.setText(_translate("MainWindow", "WTR-IM"))
-        self.label_3.setText(_translate("MainWindow", "Temperature:"))
-        self.label_6.setText(_translate("MainWindow", "Humidity:"))
-        self.label_8.setText(_translate("MainWindow", "CO2:"))
-        self.label_10.setText(_translate("MainWindow", "Status:"))
+        self.sensor1_temp_label.setText(_translate("MainWindow", "Temperature:"))
+        self.sensor1_humidity_label.setText(_translate("MainWindow", "Humidity:"))
+        self.sensor1_co2_label.setText(_translate("MainWindow", "CO2:"))
+        self.sensor1_status_label.setText(_translate("MainWindow", "Status:"))
         self.sensor2_label.setText(_translate("MainWindow", "WTR-IM 2"))
-        self.label_12.setText(_translate("MainWindow", "Temperature:"))
-        self.label_14.setText(_translate("MainWindow", "Humidity:"))
-        self.label_16.setText(_translate("MainWindow", "CO2:"))
-        self.label_18.setText(_translate("MainWindow", "Status:"))
+        self.sensor2_temp_label.setText(_translate("MainWindow", "Temperature:"))
+        self.sensor2_humidity_label.setText(_translate("MainWindow", "Humidity:"))
+        self.sensor2_co2_label.setText(_translate("MainWindow", "CO2:"))
+        self.sensor2_status_label.setText(_translate("MainWindow", "Status:"))
         self.sensor3_label.setText(_translate("MainWindow", "WTR-IM 3"))
-        self.label_20.setText(_translate("MainWindow", "Temperature:"))
-        self.label_22.setText(_translate("MainWindow", "Humidity:"))
-        self.label_24.setText(_translate("MainWindow", "CO2:"))
-        self.label_26.setText(_translate("MainWindow", "Status:"))
+        self.sensor3_temp_label.setText(_translate("MainWindow", "Temperature:"))
+        self.sensor3_humidity_label.setText(_translate("MainWindow", "Humidity:"))
+        self.sensor3_co2_label.setText(_translate("MainWindow", "CO2:"))
+        self.sensor3_status_label.setText(_translate("MainWindow", "Status:"))
         self.sensor4_label.setText(_translate("MainWindow", "WTR-IM 4"))
-        self.label_28.setText(_translate("MainWindow", "Temperature:"))
-        self.label_30.setText(_translate("MainWindow", "Humidity:"))
-        self.label_32.setText(_translate("MainWindow", "CO2:"))
-        self.label_34.setText(_translate("MainWindow", "Status:"))
+        self.sensor4_temp_label.setText(_translate("MainWindow", "Temperature:"))
+        self.sensor4_humidity_label.setText(_translate("MainWindow", "Humidity:"))
+        self.sensor4_co2_label.setText(_translate("MainWindow", "CO2:"))
+        self.sensor4_status_label.setText(_translate("MainWindow", "Status:"))
         self.label_2.setText(_translate("MainWindow", "Accounts Page"))
         self.label_4.setText(_translate("MainWindow", "Settings Page"))
 import demo_rc

@@ -48,7 +48,7 @@
 }</string>
       </property>
       <property name="frameShape">
-       <enum>QFrame::WinPanel</enum>
+       <enum>QFrame::NoFrame</enum>
       </property>
       <property name="frameShadow">
        <enum>QFrame::Raised</enum>
@@ -104,13 +104,13 @@
             <property name="minimumSize">
              <size>
               <width>50</width>
-              <height>0</height>
+              <height>50</height>
              </size>
             </property>
             <property name="maximumSize">
              <size>
               <width>50</width>
-              <height>16777215</height>
+              <height>50</height>
              </size>
             </property>
             <property name="styleSheet">
@@ -118,10 +118,8 @@
 	background-color: rgb(0, 0, 0);
 }
 QPushButton{
-
 	border: none;
-	border-radius: 5px;
-	
+	border-radius: 10px;
 	background-color: rgb(0, 0, 0);
 	color: rgb(255, 255, 255);
 }
@@ -133,7 +131,7 @@ QPushButton:hover{
              <enum>QFrame::NoFrame</enum>
             </property>
             <property name="frameShadow">
-             <enum>QFrame::Raised</enum>
+             <enum>QFrame::Sunken</enum>
             </property>
             <layout class="QHBoxLayout" name="horizontalLayout_4">
              <property name="spacing">
@@ -162,7 +160,7 @@ QPushButton:hover{
                <property name="maximumSize">
                 <size>
                  <width>50</width>
-                 <height>16777215</height>
+                 <height>50</height>
                 </size>
                </property>
                <property name="text">
@@ -329,15 +327,16 @@ QPushButton:hover{
 	background-color: rgb(0, 0, 0);
 }
 QPushButton{
-	padding: 20px 10px;
 	border: none;
 	border-radius: 10px;
-	
 	background-color: rgb(0, 0, 0);
 	color: rgb(255, 255, 255);
 }
 QPushButton:hover{
 	background-color: rgb(0, 104, 156);
+}
+QPushButton:text{
+	padding-left: 50px
 }</string>
          </property>
          <property name="frameShape">
@@ -351,7 +350,7 @@ QPushButton:hover{
            <number>0</number>
           </property>
           <property name="leftMargin">
-           <number>7</number>
+           <number>0</number>
           </property>
           <property name="topMargin">
            <number>0</number>
@@ -364,6 +363,21 @@ QPushButton:hover{
           </property>
           <item>
            <widget class="QFrame" name="left_menu_top_buttons">
+            <property name="minimumSize">
+             <size>
+              <width>50</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true"/>
+            </property>
             <property name="frameShape">
              <enum>QFrame::StyledPanel</enum>
             </property>
@@ -402,8 +416,14 @@ QPushButton:hover{
                </property>
                <property name="minimumSize">
                 <size>
+                 <width>150</width>
+                 <height>50</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
                  <width>100</width>
-                 <height>0</height>
+                 <height>16777215</height>
                 </size>
                </property>
                <property name="font">
@@ -417,7 +437,6 @@ QPushButton:hover{
                <property name="styleSheet">
                 <string notr="true">background-image: url(:/icons/icons/cil-rss.png);
 background-repeat: none;
-padding-left: 50px;
 background-position: center left;
 </string>
                </property>
@@ -433,14 +452,13 @@ background-position: center left;
               <widget class="QPushButton" name="accounts_button">
                <property name="minimumSize">
                 <size>
-                 <width>100</width>
-                 <height>0</height>
+                 <width>150</width>
+                 <height>50</height>
                 </size>
                </property>
                <property name="styleSheet">
                 <string notr="true">background-image: url(:/icons/icons/cil-user.png);
 background-repeat: none;
-padding-left: 50px;
 background-position: center left;</string>
                </property>
                <property name="text">
@@ -455,14 +473,13 @@ background-position: center left;</string>
            <widget class="QPushButton" name="settings_button">
             <property name="minimumSize">
              <size>
-              <width>100</width>
-              <height>0</height>
+              <width>150</width>
+              <height>50</height>
              </size>
             </property>
             <property name="styleSheet">
              <string notr="true">background-image: url(:/icons/icons/cil-settings.png);
 background-repeat: none;
-padding-left: 50px;
 background-position: center left;</string>
             </property>
             <property name="text">
@@ -551,7 +568,7 @@ QPushButton:hover{
 </string>
                 </property>
                 <property name="currentIndex">
-                 <number>0</number>
+                 <number>2</number>
                 </property>
                 <widget class="QWidget" name="sensor1_page">
                  <property name="styleSheet">
@@ -765,7 +782,7 @@ border-radius: 5px;</string>
                            </size>
                           </property>
                           <property name="styleSheet">
-                           <string notr="true">background-color: rgb(34, 34, 34);</string>
+                           <string notr="true"/>
                           </property>
                           <property name="frameShape">
                            <enum>QFrame::StyledPanel</enum>
@@ -792,8 +809,17 @@ border-radius: 5px;</string>
                            <item>
                             <widget class="QFrame" name="sensor1_temp_frame">
                              <property name="styleSheet">
-                              <string notr="true">background-color: rgb(23, 37, 83);
-border-radius: 5px;</string>
+                              <string notr="true">QFrame{
+background-color: rgb(23, 37, 83);
+border-radius: 5px;
+}
+QPushButton{
+background-color: rgb(23, 37, 83);
+}
+QPushButton:hover{
+	background-color: rgb(0, 104, 156);
+	border-radius: 5px;
+}</string>
                              </property>
                              <property name="frameShape">
                               <enum>QFrame::StyledPanel</enum>
@@ -818,7 +844,7 @@ border-radius: 5px;</string>
                                <number>0</number>
                               </property>
                               <item>
-                               <widget class="QLabel" name="label_3">
+                               <widget class="QLabel" name="sensor1_temp_label">
                                 <property name="minimumSize">
                                  <size>
                                   <width>0</width>
@@ -834,12 +860,40 @@ border-radius: 5px;</string>
                                </widget>
                               </item>
                               <item>
-                               <widget class="QLabel" name="label_5">
+                               <widget class="QLabel" name="sensor1_temp_value">
                                 <property name="styleSheet">
                                  <string notr="true">color: rgb(255, 255, 255);</string>
                                 </property>
                                 <property name="text">
                                  <string/>
+                                </property>
+                               </widget>
+                              </item>
+                              <item>
+                               <widget class="QPushButton" name="sensor1_temp_trend_btn">
+                                <property name="maximumSize">
+                                 <size>
+                                  <width>32</width>
+                                  <height>32</height>
+                                 </size>
+                                </property>
+                                <property name="styleSheet">
+                                 <string notr="true">background:hover{
+	
+}</string>
+                                </property>
+                                <property name="text">
+                                 <string/>
+                                </property>
+                                <property name="icon">
+                                 <iconset resource="demo.qrc">
+                                  <normaloff>:/icons/icons/cil-chart-line.png</normaloff>:/icons/icons/cil-chart-line.png</iconset>
+                                </property>
+                                <property name="iconSize">
+                                 <size>
+                                  <width>32</width>
+                                  <height>32</height>
+                                 </size>
                                 </property>
                                </widget>
                               </item>
@@ -849,8 +903,17 @@ border-radius: 5px;</string>
                            <item>
                             <widget class="QFrame" name="sensor1_humidity_frame">
                              <property name="styleSheet">
-                              <string notr="true">background-color: rgb(23, 37, 83);
-border-radius: 5px;</string>
+                              <string notr="true">QFrame{
+background-color: rgb(23, 37, 83);
+border-radius: 5px;
+}
+QPushButton{
+background-color: rgb(23, 37, 83);
+}
+QPushButton:hover{
+	background-color: rgb(0, 104, 156);
+	border-radius: 5px;
+}</string>
                              </property>
                              <property name="frameShape">
                               <enum>QFrame::StyledPanel</enum>
@@ -875,7 +938,7 @@ border-radius: 5px;</string>
                                <number>0</number>
                               </property>
                               <item>
-                               <widget class="QLabel" name="label_6">
+                               <widget class="QLabel" name="sensor1_humidity_label">
                                 <property name="maximumSize">
                                  <size>
                                   <width>46</width>
@@ -891,12 +954,38 @@ border-radius: 5px;</string>
                                </widget>
                               </item>
                               <item>
-                               <widget class="QLabel" name="label_7">
+                               <widget class="QLabel" name="sensor1_humidity_value">
                                 <property name="styleSheet">
                                  <string notr="true">color: rgb(255, 255, 255);</string>
                                 </property>
                                 <property name="text">
                                  <string/>
+                                </property>
+                               </widget>
+                              </item>
+                              <item>
+                               <widget class="QPushButton" name="sensor1_humidity_trend_btn">
+                                <property name="maximumSize">
+                                 <size>
+                                  <width>32</width>
+                                  <height>32</height>
+                                 </size>
+                                </property>
+                                <property name="styleSheet">
+                                 <string notr="true"/>
+                                </property>
+                                <property name="text">
+                                 <string/>
+                                </property>
+                                <property name="icon">
+                                 <iconset resource="demo.qrc">
+                                  <normaloff>:/icons/icons/cil-chart-line.png</normaloff>:/icons/icons/cil-chart-line.png</iconset>
+                                </property>
+                                <property name="iconSize">
+                                 <size>
+                                  <width>32</width>
+                                  <height>32</height>
+                                 </size>
                                 </property>
                                </widget>
                               </item>
@@ -906,8 +995,17 @@ border-radius: 5px;</string>
                            <item>
                             <widget class="QFrame" name="sensor1_CO2_frame">
                              <property name="styleSheet">
-                              <string notr="true">background-color: rgb(23, 37, 83);
-border-radius: 5px;</string>
+                              <string notr="true">QFrame{
+background-color: rgb(23, 37, 83);
+border-radius: 5px;
+}
+QPushButton{
+background-color: rgb(23, 37, 83);
+}
+QPushButton:hover{
+	background-color: rgb(0, 104, 156);
+	border-radius: 5px;
+}</string>
                              </property>
                              <property name="frameShape">
                               <enum>QFrame::StyledPanel</enum>
@@ -932,7 +1030,7 @@ border-radius: 5px;</string>
                                <number>0</number>
                               </property>
                               <item>
-                               <widget class="QLabel" name="label_8">
+                               <widget class="QLabel" name="sensor1_co2_label">
                                 <property name="maximumSize">
                                  <size>
                                   <width>30</width>
@@ -948,12 +1046,38 @@ border-radius: 5px;</string>
                                </widget>
                               </item>
                               <item>
-                               <widget class="QLabel" name="label_9">
+                               <widget class="QLabel" name="sensor1_co2_value">
                                 <property name="styleSheet">
                                  <string notr="true">color: rgb(255, 255, 255);</string>
                                 </property>
                                 <property name="text">
                                  <string/>
+                                </property>
+                               </widget>
+                              </item>
+                              <item>
+                               <widget class="QPushButton" name="sensor1_co2_trend_btn">
+                                <property name="maximumSize">
+                                 <size>
+                                  <width>32</width>
+                                  <height>32</height>
+                                 </size>
+                                </property>
+                                <property name="styleSheet">
+                                 <string notr="true"/>
+                                </property>
+                                <property name="text">
+                                 <string/>
+                                </property>
+                                <property name="icon">
+                                 <iconset resource="demo.qrc">
+                                  <normaloff>:/icons/icons/cil-chart-line.png</normaloff>:/icons/icons/cil-chart-line.png</iconset>
+                                </property>
+                                <property name="iconSize">
+                                 <size>
+                                  <width>32</width>
+                                  <height>32</height>
+                                 </size>
                                 </property>
                                </widget>
                               </item>
@@ -989,7 +1113,7 @@ border-radius: 5px;</string>
                                <number>0</number>
                               </property>
                               <item>
-                               <widget class="QLabel" name="label_10">
+                               <widget class="QLabel" name="sensor1_status_label">
                                 <property name="maximumSize">
                                  <size>
                                   <width>35</width>
@@ -1005,7 +1129,7 @@ border-radius: 5px;</string>
                                </widget>
                               </item>
                               <item>
-                               <widget class="QLabel" name="label_11">
+                               <widget class="QLabel" name="sensor1_status_value">
                                 <property name="styleSheet">
                                  <string notr="true">color: rgb(255, 255, 255);</string>
                                 </property>
@@ -1021,13 +1145,9 @@ border-radius: 5px;</string>
                          </widget>
                         </item>
                         <item>
-                         <widget class="QFrame" name="sensor1_data">
-                          <property name="styleSheet">
-                           <string notr="true">background-color: rgb(34, 34, 34);
-border-radius: 5px;</string>
-                          </property>
+                         <widget class="QFrame" name="sensor_trend_frame">
                           <property name="frameShape">
-                           <enum>QFrame::NoFrame</enum>
+                           <enum>QFrame::StyledPanel</enum>
                           </property>
                           <property name="frameShadow">
                            <enum>QFrame::Raised</enum>
@@ -1273,9 +1393,24 @@ border-radius: 5px;</string>
                            </property>
                            <item>
                             <widget class="QFrame" name="sensor2_temp_frame">
+                             <property name="maximumSize">
+                              <size>
+                               <width>16777215</width>
+                               <height>1677215</height>
+                              </size>
+                             </property>
                              <property name="styleSheet">
-                              <string notr="true">background-color: rgb(23, 37, 83);
-border-radius: 5px;</string>
+                              <string notr="true">QFrame{
+background-color: rgb(23, 37, 83);
+border-radius: 5px;
+}
+QPushButton{
+background-color: rgb(23, 37, 83);
+}
+QPushButton:hover{
+	background-color: rgb(0, 104, 156);
+	border-radius: 5px;
+}</string>
                              </property>
                              <property name="frameShape">
                               <enum>QFrame::StyledPanel</enum>
@@ -1300,7 +1435,7 @@ border-radius: 5px;</string>
                                <number>0</number>
                               </property>
                               <item>
-                               <widget class="QLabel" name="label_12">
+                               <widget class="QLabel" name="sensor2_temp_label">
                                 <property name="minimumSize">
                                  <size>
                                   <width>0</width>
@@ -1316,12 +1451,35 @@ border-radius: 5px;</string>
                                </widget>
                               </item>
                               <item>
-                               <widget class="QLabel" name="label_13">
+                               <widget class="QLabel" name="sensor2_temp_value">
                                 <property name="styleSheet">
                                  <string notr="true">color: rgb(255, 255, 255);</string>
                                 </property>
                                 <property name="text">
                                  <string/>
+                                </property>
+                               </widget>
+                              </item>
+                              <item>
+                               <widget class="QPushButton" name="sensor2_temp_trend_btn">
+                                <property name="maximumSize">
+                                 <size>
+                                  <width>32</width>
+                                  <height>32</height>
+                                 </size>
+                                </property>
+                                <property name="text">
+                                 <string/>
+                                </property>
+                                <property name="icon">
+                                 <iconset resource="demo.qrc">
+                                  <normaloff>:/icons/icons/cil-chart-line.png</normaloff>:/icons/icons/cil-chart-line.png</iconset>
+                                </property>
+                                <property name="iconSize">
+                                 <size>
+                                  <width>32</width>
+                                  <height>32</height>
+                                 </size>
                                 </property>
                                </widget>
                               </item>
@@ -1331,8 +1489,17 @@ border-radius: 5px;</string>
                            <item>
                             <widget class="QFrame" name="sensor2_humidity_frame">
                              <property name="styleSheet">
-                              <string notr="true">background-color: rgb(23, 37, 83);
-border-radius: 5px;</string>
+                              <string notr="true">QFrame{
+background-color: rgb(23, 37, 83);
+border-radius: 5px;
+}
+QPushButton{
+background-color: rgb(23, 37, 83);
+}
+QPushButton:hover{
+	background-color: rgb(0, 104, 156);
+	border-radius: 5px;
+}</string>
                              </property>
                              <property name="frameShape">
                               <enum>QFrame::StyledPanel</enum>
@@ -1357,7 +1524,7 @@ border-radius: 5px;</string>
                                <number>0</number>
                               </property>
                               <item>
-                               <widget class="QLabel" name="label_14">
+                               <widget class="QLabel" name="sensor2_humidity_label">
                                 <property name="maximumSize">
                                  <size>
                                   <width>46</width>
@@ -1373,12 +1540,35 @@ border-radius: 5px;</string>
                                </widget>
                               </item>
                               <item>
-                               <widget class="QLabel" name="label_15">
+                               <widget class="QLabel" name="sensor2_humidity_value">
                                 <property name="styleSheet">
                                  <string notr="true">color: rgb(255, 255, 255);</string>
                                 </property>
                                 <property name="text">
                                  <string/>
+                                </property>
+                               </widget>
+                              </item>
+                              <item>
+                               <widget class="QPushButton" name="sensor2_humidity_trend_btn">
+                                <property name="maximumSize">
+                                 <size>
+                                  <width>32</width>
+                                  <height>32</height>
+                                 </size>
+                                </property>
+                                <property name="text">
+                                 <string/>
+                                </property>
+                                <property name="icon">
+                                 <iconset resource="demo.qrc">
+                                  <normaloff>:/icons/icons/cil-chart-line.png</normaloff>:/icons/icons/cil-chart-line.png</iconset>
+                                </property>
+                                <property name="iconSize">
+                                 <size>
+                                  <width>32</width>
+                                  <height>32</height>
+                                 </size>
                                 </property>
                                </widget>
                               </item>
@@ -1388,8 +1578,17 @@ border-radius: 5px;</string>
                            <item>
                             <widget class="QFrame" name="sensor2_CO2_frame">
                              <property name="styleSheet">
-                              <string notr="true">background-color: rgb(23, 37, 83);
-border-radius: 5px;</string>
+                              <string notr="true">QFrame{
+background-color: rgb(23, 37, 83);
+border-radius: 5px;
+}
+QPushButton{
+background-color: rgb(23, 37, 83);
+}
+QPushButton:hover{
+	background-color: rgb(0, 104, 156);
+	border-radius: 5px;
+}</string>
                              </property>
                              <property name="frameShape">
                               <enum>QFrame::StyledPanel</enum>
@@ -1414,7 +1613,7 @@ border-radius: 5px;</string>
                                <number>0</number>
                               </property>
                               <item>
-                               <widget class="QLabel" name="label_16">
+                               <widget class="QLabel" name="sensor2_co2_label">
                                 <property name="maximumSize">
                                  <size>
                                   <width>30</width>
@@ -1430,12 +1629,35 @@ border-radius: 5px;</string>
                                </widget>
                               </item>
                               <item>
-                               <widget class="QLabel" name="label_17">
+                               <widget class="QLabel" name="sensor2_co2_value">
                                 <property name="styleSheet">
                                  <string notr="true">color: rgb(255, 255, 255);</string>
                                 </property>
                                 <property name="text">
                                  <string/>
+                                </property>
+                               </widget>
+                              </item>
+                              <item>
+                               <widget class="QPushButton" name="sensor2_co2_trend_btn">
+                                <property name="maximumSize">
+                                 <size>
+                                  <width>32</width>
+                                  <height>32</height>
+                                 </size>
+                                </property>
+                                <property name="text">
+                                 <string/>
+                                </property>
+                                <property name="icon">
+                                 <iconset resource="demo.qrc">
+                                  <normaloff>:/icons/icons/cil-chart-line.png</normaloff>:/icons/icons/cil-chart-line.png</iconset>
+                                </property>
+                                <property name="iconSize">
+                                 <size>
+                                  <width>32</width>
+                                  <height>32</height>
+                                 </size>
                                 </property>
                                </widget>
                               </item>
@@ -1445,8 +1667,17 @@ border-radius: 5px;</string>
                            <item>
                             <widget class="QFrame" name="sensor2_status_frame">
                              <property name="styleSheet">
-                              <string notr="true">background-color: rgb(23, 37, 83);
-border-radius: 5px;</string>
+                              <string notr="true">QFrame{
+background-color: rgb(23, 37, 83);
+border-radius: 5px;
+}
+QPushButton{
+background-color: rgb(23, 37, 83);
+}
+QPushButton:hover{
+	background-color: rgb(0, 104, 156);
+	border-radius: 5px;
+}</string>
                              </property>
                              <property name="frameShape">
                               <enum>QFrame::StyledPanel</enum>
@@ -1471,7 +1702,7 @@ border-radius: 5px;</string>
                                <number>0</number>
                               </property>
                               <item>
-                               <widget class="QLabel" name="label_18">
+                               <widget class="QLabel" name="sensor2_status_label">
                                 <property name="maximumSize">
                                  <size>
                                   <width>35</width>
@@ -1487,7 +1718,7 @@ border-radius: 5px;</string>
                                </widget>
                               </item>
                               <item>
-                               <widget class="QLabel" name="label_19">
+                               <widget class="QLabel" name="sensor2_status_value">
                                 <property name="styleSheet">
                                  <string notr="true">color: rgb(255, 255, 255);</string>
                                 </property>
@@ -1756,8 +1987,17 @@ border-radius: 5px;</string>
                            <item>
                             <widget class="QFrame" name="sensor3_temp_frame">
                              <property name="styleSheet">
-                              <string notr="true">background-color: rgb(23, 37, 83);
-border-radius: 5px;</string>
+                              <string notr="true">QFrame{
+background-color: rgb(23, 37, 83);
+border-radius: 5px;
+}
+QPushButton{
+background-color: rgb(23, 37, 83);
+}
+QPushButton:hover{
+	background-color: rgb(0, 104, 156);
+	border-radius: 5px;
+}</string>
                              </property>
                              <property name="frameShape">
                               <enum>QFrame::StyledPanel</enum>
@@ -1782,7 +2022,7 @@ border-radius: 5px;</string>
                                <number>0</number>
                               </property>
                               <item>
-                               <widget class="QLabel" name="label_20">
+                               <widget class="QLabel" name="sensor3_temp_label">
                                 <property name="minimumSize">
                                  <size>
                                   <width>0</width>
@@ -1798,12 +2038,35 @@ border-radius: 5px;</string>
                                </widget>
                               </item>
                               <item>
-                               <widget class="QLabel" name="label_21">
+                               <widget class="QLabel" name="sensor3_temp_value">
                                 <property name="styleSheet">
                                  <string notr="true">color: rgb(255, 255, 255);</string>
                                 </property>
                                 <property name="text">
                                  <string/>
+                                </property>
+                               </widget>
+                              </item>
+                              <item>
+                               <widget class="QPushButton" name="sensor3_temp_trend_btn">
+                                <property name="maximumSize">
+                                 <size>
+                                  <width>32</width>
+                                  <height>32</height>
+                                 </size>
+                                </property>
+                                <property name="text">
+                                 <string/>
+                                </property>
+                                <property name="icon">
+                                 <iconset resource="demo.qrc">
+                                  <normaloff>:/icons/icons/cil-chart-line.png</normaloff>:/icons/icons/cil-chart-line.png</iconset>
+                                </property>
+                                <property name="iconSize">
+                                 <size>
+                                  <width>32</width>
+                                  <height>32</height>
+                                 </size>
                                 </property>
                                </widget>
                               </item>
@@ -1813,8 +2076,17 @@ border-radius: 5px;</string>
                            <item>
                             <widget class="QFrame" name="sensor3_humidity_frame">
                              <property name="styleSheet">
-                              <string notr="true">background-color: rgb(23, 37, 83);
-border-radius: 5px;</string>
+                              <string notr="true">QFrame{
+background-color: rgb(23, 37, 83);
+border-radius: 5px;
+}
+QPushButton{
+background-color: rgb(23, 37, 83);
+}
+QPushButton:hover{
+	background-color: rgb(0, 104, 156);
+	border-radius: 5px;
+}</string>
                              </property>
                              <property name="frameShape">
                               <enum>QFrame::StyledPanel</enum>
@@ -1839,7 +2111,7 @@ border-radius: 5px;</string>
                                <number>0</number>
                               </property>
                               <item>
-                               <widget class="QLabel" name="label_22">
+                               <widget class="QLabel" name="sensor3_humidity_label">
                                 <property name="maximumSize">
                                  <size>
                                   <width>46</width>
@@ -1855,12 +2127,35 @@ border-radius: 5px;</string>
                                </widget>
                               </item>
                               <item>
-                               <widget class="QLabel" name="label_23">
+                               <widget class="QLabel" name="sensor3_humidity_value">
                                 <property name="styleSheet">
                                  <string notr="true">color: rgb(255, 255, 255);</string>
                                 </property>
                                 <property name="text">
                                  <string/>
+                                </property>
+                               </widget>
+                              </item>
+                              <item>
+                               <widget class="QPushButton" name="sensor3_humidity_trend_btn">
+                                <property name="maximumSize">
+                                 <size>
+                                  <width>32</width>
+                                  <height>32</height>
+                                 </size>
+                                </property>
+                                <property name="text">
+                                 <string/>
+                                </property>
+                                <property name="icon">
+                                 <iconset resource="demo.qrc">
+                                  <normaloff>:/icons/icons/cil-chart-line.png</normaloff>:/icons/icons/cil-chart-line.png</iconset>
+                                </property>
+                                <property name="iconSize">
+                                 <size>
+                                  <width>32</width>
+                                  <height>32</height>
+                                 </size>
                                 </property>
                                </widget>
                               </item>
@@ -1870,8 +2165,17 @@ border-radius: 5px;</string>
                            <item>
                             <widget class="QFrame" name="sensor3_CO2_frame">
                              <property name="styleSheet">
-                              <string notr="true">background-color: rgb(23, 37, 83);
-border-radius: 5px;</string>
+                              <string notr="true">QFrame{
+background-color: rgb(23, 37, 83);
+border-radius: 5px;
+}
+QPushButton{
+background-color: rgb(23, 37, 83);
+}
+QPushButton:hover{
+	background-color: rgb(0, 104, 156);
+	border-radius: 5px;
+}</string>
                              </property>
                              <property name="frameShape">
                               <enum>QFrame::StyledPanel</enum>
@@ -1896,7 +2200,7 @@ border-radius: 5px;</string>
                                <number>0</number>
                               </property>
                               <item>
-                               <widget class="QLabel" name="label_24">
+                               <widget class="QLabel" name="sensor3_co2_label">
                                 <property name="maximumSize">
                                  <size>
                                   <width>30</width>
@@ -1912,12 +2216,35 @@ border-radius: 5px;</string>
                                </widget>
                               </item>
                               <item>
-                               <widget class="QLabel" name="label_25">
+                               <widget class="QLabel" name="sensor3_co2_value">
                                 <property name="styleSheet">
                                  <string notr="true">color: rgb(255, 255, 255);</string>
                                 </property>
                                 <property name="text">
                                  <string/>
+                                </property>
+                               </widget>
+                              </item>
+                              <item>
+                               <widget class="QPushButton" name="sensor3_co2_trend_btn">
+                                <property name="maximumSize">
+                                 <size>
+                                  <width>32</width>
+                                  <height>32</height>
+                                 </size>
+                                </property>
+                                <property name="text">
+                                 <string/>
+                                </property>
+                                <property name="icon">
+                                 <iconset resource="demo.qrc">
+                                  <normaloff>:/icons/icons/cil-chart-line.png</normaloff>:/icons/icons/cil-chart-line.png</iconset>
+                                </property>
+                                <property name="iconSize">
+                                 <size>
+                                  <width>32</width>
+                                  <height>32</height>
+                                 </size>
                                 </property>
                                </widget>
                               </item>
@@ -1927,8 +2254,17 @@ border-radius: 5px;</string>
                            <item>
                             <widget class="QFrame" name="sensor3_status_frame">
                              <property name="styleSheet">
-                              <string notr="true">background-color: rgb(23, 37, 83);
-border-radius: 5px;</string>
+                              <string notr="true">QFrame{
+background-color: rgb(23, 37, 83);
+border-radius: 5px;
+}
+QPushButton{
+background-color: rgb(23, 37, 83);
+}
+QPushButton:hover{
+	background-color: rgb(0, 104, 156);
+	border-radius: 5px;
+}</string>
                              </property>
                              <property name="frameShape">
                               <enum>QFrame::StyledPanel</enum>
@@ -1953,7 +2289,7 @@ border-radius: 5px;</string>
                                <number>0</number>
                               </property>
                               <item>
-                               <widget class="QLabel" name="label_26">
+                               <widget class="QLabel" name="sensor3_status_label">
                                 <property name="maximumSize">
                                  <size>
                                   <width>35</width>
@@ -1969,7 +2305,7 @@ border-radius: 5px;</string>
                                </widget>
                               </item>
                               <item>
-                               <widget class="QLabel" name="label_27">
+                               <widget class="QLabel" name="sensor3_status_value">
                                 <property name="styleSheet">
                                  <string notr="true">color: rgb(255, 255, 255);</string>
                                 </property>
@@ -2238,8 +2574,17 @@ border-radius: 5px;</string>
                            <item>
                             <widget class="QFrame" name="sensor4_temp_frame">
                              <property name="styleSheet">
-                              <string notr="true">background-color: rgb(23, 37, 83);
-border-radius: 5px;</string>
+                              <string notr="true">QFrame{
+background-color: rgb(23, 37, 83);
+border-radius: 5px;
+}
+QPushButton{
+background-color: rgb(23, 37, 83);
+}
+QPushButton:hover{
+	background-color: rgb(0, 104, 156);
+	border-radius: 5px;
+}</string>
                              </property>
                              <property name="frameShape">
                               <enum>QFrame::StyledPanel</enum>
@@ -2264,7 +2609,7 @@ border-radius: 5px;</string>
                                <number>0</number>
                               </property>
                               <item>
-                               <widget class="QLabel" name="label_28">
+                               <widget class="QLabel" name="sensor4_temp_label">
                                 <property name="minimumSize">
                                  <size>
                                   <width>0</width>
@@ -2280,12 +2625,35 @@ border-radius: 5px;</string>
                                </widget>
                               </item>
                               <item>
-                               <widget class="QLabel" name="label_29">
+                               <widget class="QLabel" name="sensor4_temp_value">
                                 <property name="styleSheet">
                                  <string notr="true">color: rgb(255, 255, 255);</string>
                                 </property>
                                 <property name="text">
                                  <string/>
+                                </property>
+                               </widget>
+                              </item>
+                              <item>
+                               <widget class="QPushButton" name="sensor4_temp_trend_btn">
+                                <property name="maximumSize">
+                                 <size>
+                                  <width>32</width>
+                                  <height>32</height>
+                                 </size>
+                                </property>
+                                <property name="text">
+                                 <string/>
+                                </property>
+                                <property name="icon">
+                                 <iconset resource="demo.qrc">
+                                  <normaloff>:/icons/icons/cil-chart-line.png</normaloff>:/icons/icons/cil-chart-line.png</iconset>
+                                </property>
+                                <property name="iconSize">
+                                 <size>
+                                  <width>32</width>
+                                  <height>32</height>
+                                 </size>
                                 </property>
                                </widget>
                               </item>
@@ -2295,8 +2663,17 @@ border-radius: 5px;</string>
                            <item>
                             <widget class="QFrame" name="sensor4_humidity_frame">
                              <property name="styleSheet">
-                              <string notr="true">background-color: rgb(23, 37, 83);
-border-radius: 5px;</string>
+                              <string notr="true">QFrame{
+background-color: rgb(23, 37, 83);
+border-radius: 5px;
+}
+QPushButton{
+background-color: rgb(23, 37, 83);
+}
+QPushButton:hover{
+	background-color: rgb(0, 104, 156);
+	border-radius: 5px;
+}</string>
                              </property>
                              <property name="frameShape">
                               <enum>QFrame::StyledPanel</enum>
@@ -2321,7 +2698,7 @@ border-radius: 5px;</string>
                                <number>0</number>
                               </property>
                               <item>
-                               <widget class="QLabel" name="label_30">
+                               <widget class="QLabel" name="sensor4_humidity_label">
                                 <property name="maximumSize">
                                  <size>
                                   <width>46</width>
@@ -2337,12 +2714,35 @@ border-radius: 5px;</string>
                                </widget>
                               </item>
                               <item>
-                               <widget class="QLabel" name="label_31">
+                               <widget class="QLabel" name="sensor4_humidity_value">
                                 <property name="styleSheet">
                                  <string notr="true">color: rgb(255, 255, 255);</string>
                                 </property>
                                 <property name="text">
                                  <string/>
+                                </property>
+                               </widget>
+                              </item>
+                              <item>
+                               <widget class="QPushButton" name="sensor4_humidity_trend_btn">
+                                <property name="maximumSize">
+                                 <size>
+                                  <width>32</width>
+                                  <height>32</height>
+                                 </size>
+                                </property>
+                                <property name="text">
+                                 <string/>
+                                </property>
+                                <property name="icon">
+                                 <iconset resource="demo.qrc">
+                                  <normaloff>:/icons/icons/cil-chart-line.png</normaloff>:/icons/icons/cil-chart-line.png</iconset>
+                                </property>
+                                <property name="iconSize">
+                                 <size>
+                                  <width>32</width>
+                                  <height>32</height>
+                                 </size>
                                 </property>
                                </widget>
                               </item>
@@ -2352,8 +2752,17 @@ border-radius: 5px;</string>
                            <item>
                             <widget class="QFrame" name="sensor4_CO2_frame">
                              <property name="styleSheet">
-                              <string notr="true">background-color: rgb(23, 37, 83);
-border-radius: 5px;</string>
+                              <string notr="true">QFrame{
+background-color: rgb(23, 37, 83);
+border-radius: 5px;
+}
+QPushButton{
+background-color: rgb(23, 37, 83);
+}
+QPushButton:hover{
+	background-color: rgb(0, 104, 156);
+	border-radius: 5px;
+}</string>
                              </property>
                              <property name="frameShape">
                               <enum>QFrame::StyledPanel</enum>
@@ -2378,7 +2787,7 @@ border-radius: 5px;</string>
                                <number>0</number>
                               </property>
                               <item>
-                               <widget class="QLabel" name="label_32">
+                               <widget class="QLabel" name="sensor4_co2_label">
                                 <property name="maximumSize">
                                  <size>
                                   <width>30</width>
@@ -2394,12 +2803,35 @@ border-radius: 5px;</string>
                                </widget>
                               </item>
                               <item>
-                               <widget class="QLabel" name="label_33">
+                               <widget class="QLabel" name="sensor4_co2_value">
                                 <property name="styleSheet">
                                  <string notr="true">color: rgb(255, 255, 255);</string>
                                 </property>
                                 <property name="text">
                                  <string/>
+                                </property>
+                               </widget>
+                              </item>
+                              <item>
+                               <widget class="QPushButton" name="sensor4_co2_trend_btn">
+                                <property name="maximumSize">
+                                 <size>
+                                  <width>32</width>
+                                  <height>32</height>
+                                 </size>
+                                </property>
+                                <property name="text">
+                                 <string/>
+                                </property>
+                                <property name="icon">
+                                 <iconset resource="demo.qrc">
+                                  <normaloff>:/icons/icons/cil-chart-line.png</normaloff>:/icons/icons/cil-chart-line.png</iconset>
+                                </property>
+                                <property name="iconSize">
+                                 <size>
+                                  <width>32</width>
+                                  <height>32</height>
+                                 </size>
                                 </property>
                                </widget>
                               </item>
@@ -2409,8 +2841,17 @@ border-radius: 5px;</string>
                            <item>
                             <widget class="QFrame" name="sensor4_status_frame">
                              <property name="styleSheet">
-                              <string notr="true">background-color: rgb(23, 37, 83);
-border-radius: 5px;</string>
+                              <string notr="true">QFrame{
+background-color: rgb(23, 37, 83);
+border-radius: 5px;
+}
+QPushButton{
+background-color: rgb(23, 37, 83);
+}
+QPushButton:hover{
+	background-color: rgb(0, 104, 156);
+	border-radius: 5px;
+}</string>
                              </property>
                              <property name="frameShape">
                               <enum>QFrame::StyledPanel</enum>
@@ -2435,7 +2876,7 @@ border-radius: 5px;</string>
                                <number>0</number>
                               </property>
                               <item>
-                               <widget class="QLabel" name="label_34">
+                               <widget class="QLabel" name="sensor4_status_label">
                                 <property name="maximumSize">
                                  <size>
                                   <width>35</width>
@@ -2451,7 +2892,7 @@ border-radius: 5px;</string>
                                </widget>
                               </item>
                               <item>
-                               <widget class="QLabel" name="label_35">
+                               <widget class="QLabel" name="sensor4_status_value">
                                 <property name="styleSheet">
                                  <string notr="true">color: rgb(255, 255, 255);</string>
                                 </property>

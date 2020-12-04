@@ -1,63 +1,86 @@
 import requests
 import json
-import datetime, time, csv
-
-i = 0
-time_list = []
+import datetime
+import time
+import csv
 
 fieldnames = [
+    'humidity',
+    'timeout',
+    'temp',
+    'co2',
     'time',
-    'sensor1_temp',
-    'sensor1_humidity',
-    'sensor1_co2',
-    'sensor2_temp',
-    'sensor2_humidity',
-    'sensor2_co2',
-    'sensor3_temp',
-    'sensor3_humidity',
-    'sensor3_co2',
-    'sensor4_temp',
-    'sensor4_humidity',
-    'sensor4_co2',
 ]
 
-sensor1_temp = []
-sensor1_humidity = []
-sensor1_co2 = []
+sensors_temp = []
+sensors_humidity = []
+sensors_co2 = []
+sensors_timeout = []
+SENSORS_TYPES = [
+    'temp',
+    'humidity',
+    'co2',
+    'timeout'
+]
+sensors_readings = {
+    sensor_name: [] for sensor_name in SENSORS_TYPES
+}
+PARAMETER_NAMES = [
+    'av',
+    'av',
+    'av',
+    'ipv'
+]
 
-sensor2_temp = []
-sensor2_humidity = []
-sensor2_co2 = []
+SENSORS_NUMBER = 8
 
-sensor3_temp = []
-sensor3_humidity = []
-sensor3_co2 = []
 
-sensor4_temp = []
-sensor4_humidity = []
-sensor4_co2 = []
+SENSORS_NAMES = [
+    '_temperature',
+    '_humidity',
+    '_co2',
+    '_timeout'
+]
 
-with open('data.csv', 'w') as csv_file:
-    csv_writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
-    csv_writer.writeheader()
 
+def read_sensors(sensor_type: str, sensor_name: str, parameter_name) -> dict:
+    assert sensor_type in SENSORS_TYPES
+    assert sensor_name in SENSORS_NAMES
+    assert parameter_name in PARAMETER_NAMES
+    i = 1
+    for points in api_call_json['points']:
+        value = 'wbu1_sensor' + str(i) + sensor_name
+        if points['iess'] == value:
+            sensors_readings[sensor_type].append(points[parameter_name])
+            i += 1
+
+    info = [
+        float(sensors_readings[sensor_type][counter+i-1]) for i in range(1, SENSORS_NUMBER + 1)
+    ]
+    return info
+
+
+def time_counter():
+    return datetime.datetime.now().strftime("%H:%M:%S")
+
+# with open('new_data.csv', 'w') as csv_file:
+#     csv_writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
+#     csv_writer.writeheader()
+
+
+counter = 0
 while True:
 
-    with open('data.csv', 'a') as csv_file:
+    with open('new_data.csv', 'a') as csv_file:
         csv_writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
 
-        current_time = datetime.datetime.now()
-        current_hour = str(current_time.hour) + ':' + str(current_time.minute) + ':' + str(current_time.second)
-
-        api_call_response = requests.get('http://188.168.0.173:5000/get_points/wbu1_sensor1_temperature')
+        api_call_response = requests.get('http://188.168.0.173:5000/get_points/')
         api_call_json = json.loads(api_call_response.text)
-        y_value = json.dumps(float(api_call_json['points'][0]['av']), indent=4)
-
-        time.sleep(1)
-
-        info = {
-            "x_val": current_hour,
-            'y_val': y_value
+        whole_info = {
+            sensor_type: read_sensors(sensor_type, sensor_name, parameter_name) for sensor_type, sensor_name, parameter_name in zip(SENSORS_TYPES, SENSORS_NAMES, PARAMETER_NAMES)
         }
-
-        csv_writer.writerow(info)
+        whole_info['time'] = time_counter()
+        csv_writer.writerow(whole_info)
+        print(whole_info)
+        counter += 8
+        time.sleep(1)

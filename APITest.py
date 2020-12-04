@@ -1,16 +1,35 @@
-import requests
-import json
+import sys
+from PyQt5.QtWidgets import QApplication, QMainWindow, QLabel
+from PyQt5.QtCore import QTimer
+import pandas
 
-api_call_response = requests.get('http://188.168.0.173:5000/get_points/')
-api_call_json = json.loads(api_call_response.text)
-# responses = json.dumps(api_call_json, indent=4)
-# print(api_call_json['points'][0]['iess'])
-i = 1
+class MainWindow(QMainWindow):
 
-temperature = 'wbu1_sensor' + str(i) + "_temperature"
+    # constructor
+    def __init__(self):
+        QMainWindow.__init__(self)
+        # add QLabel
+        self.qLbl = QLabel('Not yet initialized')
+        self.setCentralWidget(self.qLbl)
+        # make QTimer
+        self.qTimer = QTimer()
+        # set interval to 1 s
+        self.qTimer.setInterval(1000) # 1000 ms = 1 s
+        # connect timeout signal to signal handler
+        self.qTimer.timeout.connect(self.getSensorValue)
+        # start timer
+        self.qTimer.start()
 
-for points in api_call_json['points']:
-    temperature = 'wbu1_sensor' + str(i) + "_temperature"
-    if points['iess'] == temperature:
-        print(points['iess'], points['av'])
-        i += 1
+    def getSensorValue(self):
+        data = pandas.read_csv('new_data.csv')
+        # print('%d. call of getSensorValue()' % self.i)
+        last_row = data.tail(1)
+        self.qLbl.setText(str(last_row['sensor1_temp']))
+
+qApp = QApplication(sys.argv)
+# setup GUI
+qWin = MainWindow()
+qWin.show()
+# run application
+sys.exit(qApp.exec_())
+

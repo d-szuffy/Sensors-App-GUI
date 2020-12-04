@@ -1,11 +1,21 @@
 import sys
 from PyQt5.QtWidgets import QMainWindow, QApplication
-from PyQt5.QtCore import Qt, QPropertyAnimation
+from PyQt5.QtCore import Qt, QPropertyAnimation, QTimer
 from concept_main_window import *
-
-
+import json
+# from matplotlib.backends.backend_qt5agg import (NavigationToolbar2QT as NavigationToolbar)
+import pandas
 WINDOW_SIZE = 0
+print('everything is working fine')
 
+SENSORS_TYPE = [
+    'temp',
+    'humidity',
+    'co2',
+    'timeout',
+]
+
+CONNECTED_SENSORS = 4
 
 class MyForm(QMainWindow):
 
@@ -15,6 +25,11 @@ class MyForm(QMainWindow):
         self.ui.setupUi(self)
         self.setWindowFlag(Qt.FramelessWindowHint)
         # self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
+
+        self.ui.qTimer = QTimer()
+        self.ui.qTimer.setInterval(1000)
+        self.ui.qTimer.timeout.connect(self.getSensorsValue)
+        self.ui.qTimer.start()
 
         # Button click events to our top bar buttons
 
@@ -37,10 +52,31 @@ class MyForm(QMainWindow):
         self.ui.sensor3_next_btn.clicked.connect(lambda: self.nextPage())
         self.ui.sensor4_prev_btn.clicked.connect(lambda: self.prevPage())
 
+        global SENSORS
+        SENSORS = [
+            self.ui.sensor1_temp_value,
+            self.ui.sensor1_humidity_value,
+            self.ui.sensor1_co2_value,
+            self.ui.sensor1_status_value,
+            self.ui.sensor2_temp_value,
+            self.ui.sensor2_humidity_value,
+            self.ui.sensor2_co2_value,
+            self.ui.sensor2_status_value,
+            self.ui.sensor3_temp_value,
+            self.ui.sensor3_humidity_value,
+            self.ui.sensor3_co2_value,
+            self.ui.sensor3_status_value,
+            self.ui.sensor4_temp_value,
+            self.ui.sensor4_humidity_value,
+            self.ui.sensor4_co2_value,
+            self.ui.sensor4_status_value
+        ]
+        # self.ui.sensor1_temp_value.setText(whole_info['sensor1_temp'])
 
-#        self.ui.pushButton_generate_random_signal.clicked.connect(lambda: self.updateGraph())
+        # self.ui.pushButton_generate_random_signal.clicked.connect(lambda: self.updateGraph())
+        # self.addToolBar(NavigationToolbar(self.ui.MplWidget.canvas, self.ui.MplWidget))
 
-#        self.addToolBar(NavigationToolbar(self.ui.MplWidget.canvas, self.ui.MplWidget))
+        # self.addToolBar(NavigationToolbar(self.ui.MplWidget.canvas, self.ui.MplWidget))
 
     # Restore or maximize your window
 
@@ -66,7 +102,7 @@ class MyForm(QMainWindow):
 
 
 #    def updateGraph(self):
-#
+
 #        data = pandas.read_csv('data.csv')
 #        x = data['x_val']
 #        y = data['y_val']
@@ -106,6 +142,17 @@ class MyForm(QMainWindow):
             self.showNormal()
             # Update button icon
             # self.ui.restoreButton.setIcon(QtGui.QIcon(u":/icons/icons/cil-window-restore.png"))#Show minized icon
+
+
+    def getSensorsValue(self):
+
+        data = pandas.read_csv('new_data.csv')
+        # print(type(json.loads(data.iloc[-1]['timeout'])))
+        for sensor in SENSORS:
+            for i in range(0, CONNECTED_SENSORS):
+                for sensor_type in SENSORS_TYPE:
+                    sensor.setText(str(round(json.loads(data.iloc[-1][sensor_type])[i], 2)))
+
 
     def nextPage(self):
 
