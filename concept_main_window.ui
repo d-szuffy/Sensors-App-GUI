@@ -6,9 +6,21 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>798</width>
-    <height>600</height>
+    <width>800</width>
+    <height>601</height>
    </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>800</width>
+    <height>600</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
@@ -457,12 +469,12 @@ background-position: center left;
                 </size>
                </property>
                <property name="styleSheet">
-                <string notr="true">background-image: url(:/icons/icons/cil-user.png);
+                <string notr="true">background-image: url(:/icons/icons/cil-screen-desktop.png);
 background-repeat: none;
 background-position: center left;</string>
                </property>
                <property name="text">
-                <string>ACCOUNT</string>
+                <string>REPORTS</string>
                </property>
               </widget>
              </item>
@@ -568,7 +580,7 @@ QPushButton:hover{
 </string>
                 </property>
                 <property name="currentIndex">
-                 <number>2</number>
+                 <number>1</number>
                 </property>
                 <widget class="QWidget" name="sensor1_page">
                  <property name="styleSheet">
@@ -1145,14 +1157,7 @@ border-radius: 5px;</string>
                          </widget>
                         </item>
                         <item>
-                         <widget class="QFrame" name="sensor_trend_frame">
-                          <property name="frameShape">
-                           <enum>QFrame::StyledPanel</enum>
-                          </property>
-                          <property name="frameShadow">
-                           <enum>QFrame::Raised</enum>
-                          </property>
-                         </widget>
+                         <widget class="MplWidget" name="sensor1_MplWidget" native="true"/>
                         </item>
                        </layout>
                       </widget>
@@ -1174,6 +1179,9 @@ border-radius: 5px;</string>
                    <number>0</number>
                   </property>
                   <property name="rightMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="bottomMargin">
                    <number>0</number>
                   </property>
                   <item>
@@ -1346,6 +1354,9 @@ border-radius: 5px;</string>
                         <enum>QFrame::Raised</enum>
                        </property>
                        <layout class="QVBoxLayout" name="verticalLayout_10">
+                        <property name="spacing">
+                         <number>6</number>
+                        </property>
                         <property name="leftMargin">
                          <number>0</number>
                         </property>
@@ -1734,18 +1745,7 @@ QPushButton:hover{
                          </widget>
                         </item>
                         <item>
-                         <widget class="QFrame" name="sensor2_data">
-                          <property name="styleSheet">
-                           <string notr="true">background-color: rgb(34, 34, 34);
-border-radius: 5px;</string>
-                          </property>
-                          <property name="frameShape">
-                           <enum>QFrame::NoFrame</enum>
-                          </property>
-                          <property name="frameShadow">
-                           <enum>QFrame::Raised</enum>
-                          </property>
-                         </widget>
+                         <widget class="MplWidget" name="sensor2_MplWidget" native="true"/>
                         </item>
                        </layout>
                       </widget>
@@ -1767,6 +1767,9 @@ border-radius: 5px;</string>
                    <number>0</number>
                   </property>
                   <property name="rightMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="bottomMargin">
                    <number>0</number>
                   </property>
                   <item>
@@ -2321,18 +2324,7 @@ QPushButton:hover{
                          </widget>
                         </item>
                         <item>
-                         <widget class="QFrame" name="sensor3_data">
-                          <property name="styleSheet">
-                           <string notr="true">background-color: rgb(34, 34, 34);
-border-radius: 5px;</string>
-                          </property>
-                          <property name="frameShape">
-                           <enum>QFrame::NoFrame</enum>
-                          </property>
-                          <property name="frameShadow">
-                           <enum>QFrame::Raised</enum>
-                          </property>
-                         </widget>
+                         <widget class="MplWidget" name="sensor3_MplWidget" native="true"/>
                         </item>
                        </layout>
                       </widget>
@@ -2354,6 +2346,9 @@ border-radius: 5px;</string>
                    <number>0</number>
                   </property>
                   <property name="rightMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="bottomMargin">
                    <number>0</number>
                   </property>
                   <item>
@@ -2908,18 +2903,7 @@ QPushButton:hover{
                          </widget>
                         </item>
                         <item>
-                         <widget class="QFrame" name="sensor4_data">
-                          <property name="styleSheet">
-                           <string notr="true">background-color: rgb(34, 34, 34);
-border-radius: 5px;</string>
-                          </property>
-                          <property name="frameShape">
-                           <enum>QFrame::NoFrame</enum>
-                          </property>
-                          <property name="frameShadow">
-                           <enum>QFrame::Raised</enum>
-                          </property>
-                         </widget>
+                         <widget class="MplWidget" name="sensor4_MplWidget" native="true"/>
                         </item>
                        </layout>
                       </widget>
@@ -2992,6 +2976,14 @@ border-radius: 5px;</string>
    </layout>
   </widget>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>MplWidget</class>
+   <extends>QWidget</extends>
+   <header>mplwidget.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources>
   <include location="demo.qrc"/>
  </resources>

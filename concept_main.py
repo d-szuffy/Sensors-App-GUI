@@ -5,6 +5,7 @@ from concept_main_window import *
 import json
 # from matplotlib.backends.backend_qt5agg import (NavigationToolbar2QT as NavigationToolbar)
 import pandas
+import numpy as np
 WINDOW_SIZE = 0
 print('everything is working fine')
 
@@ -13,9 +14,22 @@ SENSORS_TYPE = [
     'humidity',
     'co2',
     'timeout',
+    'temp',
+    'humidity',
+    'co2',
+    'timeout',
+    'temp',
+    'humidity',
+    'co2',
+    'timeout',
+    'temp',
+    'humidity',
+    'co2',
+    'timeout',
 ]
 
-CONNECTED_SENSORS = 4
+SENSORS_INDEX = [0, 0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3]
+
 
 class MyForm(QMainWindow):
 
@@ -73,7 +87,7 @@ class MyForm(QMainWindow):
         ]
         # self.ui.sensor1_temp_value.setText(whole_info['sensor1_temp'])
 
-        # self.ui.pushButton_generate_random_signal.clicked.connect(lambda: self.updateGraph())
+        self.ui.sensor1_temp_trend_btn.clicked.connect(lambda: self.updateGraph())
         # self.addToolBar(NavigationToolbar(self.ui.MplWidget.canvas, self.ui.MplWidget))
 
         # self.addToolBar(NavigationToolbar(self.ui.MplWidget.canvas, self.ui.MplWidget))
@@ -101,15 +115,18 @@ class MyForm(QMainWindow):
         self.show()
 
 
-#    def updateGraph(self):
+    def updateGraph(self):
 
-#        data = pandas.read_csv('data.csv')
-#        x = data['x_val']
-#        y = data['y_val']
-#        self.ui.MplWidget.canvas.axes.clear()
-#        self.ui.MplWidget.canvas.axes.plot(y)
-#        self.ui.MplWidget.canvas.axes.set_title('Sensor 1 - temperature readings')
-#        self.ui.MplWidget.canvas.draw()
+        y = []
+        data = pandas.read_csv('new_data.csv')
+        for value in data['temp']:
+            y.append(json.loads(value)[0])
+        x = np.linspace(0, len(y), len(y))
+        self.ui.sensor1_MplWidget.canvas.axes.clear()
+        self.ui.sensor1_MplWidget.canvas.axes.set_ylim([0, 30])
+        self.ui.sensor1_MplWidget.canvas.axes.plot(x, y)
+        self.ui.sensor1_MplWidget.canvas.axes.set_title('Sensor 1 - temperature readings')
+        self.ui.sensor1_MplWidget.canvas.draw()
 
     def mousePressEvent(self, event):
 
@@ -147,11 +164,10 @@ class MyForm(QMainWindow):
     def getSensorsValue(self):
 
         data = pandas.read_csv('new_data.csv')
-        # print(type(json.loads(data.iloc[-1]['timeout'])))
-        for sensor in SENSORS:
-            for i in range(0, CONNECTED_SENSORS):
-                for sensor_type in SENSORS_TYPE:
-                    sensor.setText(str(round(json.loads(data.iloc[-1][sensor_type])[i], 2)))
+        data_last_row = data.iloc[-1]
+        for sensor, sensor_type, i in zip(SENSORS, SENSORS_TYPE, SENSORS_INDEX):
+            sensors_value = str(round(json.loads(data_last_row[sensor_type])[i], 2))
+            sensor.setText(sensors_value)
 
 
     def nextPage(self):
