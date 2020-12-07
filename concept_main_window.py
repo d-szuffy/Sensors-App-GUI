@@ -181,7 +181,7 @@ class Ui_MainWindow(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.sensors_button.sizePolicy().hasHeightForWidth())
         self.sensors_button.setSizePolicy(sizePolicy)
-        self.sensors_button.setMinimumSize(QtCore.QSize(150, 50))
+        self.sensors_button.setMinimumSize(QtCore.QSize(50, 50))
         self.sensors_button.setMaximumSize(QtCore.QSize(100, 16777215))
         font = QtGui.QFont()
         font.setKerning(False)
@@ -189,8 +189,9 @@ class Ui_MainWindow(object):
         self.sensors_button.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.sensors_button.setStyleSheet("background-image: url(:/icons/icons/cil-rss.png);\n"
 "background-repeat: none;\n"
-"background-position: center left;\n"
+"background-position: center;\n"
 "")
+        self.sensors_button.setText("")
         self.sensors_button.setDefault(False)
         self.sensors_button.setObjectName("sensors_button")
         self.formLayout.setWidget(0, QtWidgets.QFormLayout.SpanningRole, self.sensors_button)
@@ -1219,7 +1220,6 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.sensors_button.setText(_translate("MainWindow", "SENSORS"))
         self.accounts_button.setText(_translate("MainWindow", "REPORTS"))
         self.settings_button.setText(_translate("MainWindow", "SETTINGS"))
         self.sensor1_label.setText(_translate("MainWindow", "WTR-IM"))

@@ -41,7 +41,7 @@ class MyForm(QMainWindow):
         # self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
 
         self.ui.qTimer = QTimer()
-        self.ui.qTimer.setInterval(1000)
+        self.ui.qTimer.setInterval(5000)
         self.ui.qTimer.timeout.connect(self.getSensorsValue)
         self.ui.qTimer.start()
 
@@ -87,7 +87,8 @@ class MyForm(QMainWindow):
         ]
         # self.ui.sensor1_temp_value.setText(whole_info['sensor1_temp'])
 
-        self.ui.sensor1_temp_trend_btn.clicked.connect(lambda: self.updateGraph())
+        self.ui.sensor1_temp_trend_btn.clicked.connect(lambda: self.updateGraphTemp())
+        self.ui.sensor1_humidity_trend_btn.clicked.connect(lambda: self.updateGraphHumidity())
         # self.addToolBar(NavigationToolbar(self.ui.MplWidget.canvas, self.ui.MplWidget))
 
         # self.addToolBar(NavigationToolbar(self.ui.MplWidget.canvas, self.ui.MplWidget))
@@ -114,8 +115,7 @@ class MyForm(QMainWindow):
         self.ui.pushButton.clicked.connect(lambda: self.slideLeftMenu())
         self.show()
 
-
-    def updateGraph(self):
+    def updateGraphTemp(self):
 
         y = []
         data = pandas.read_csv('new_data.csv')
@@ -123,10 +123,25 @@ class MyForm(QMainWindow):
             y.append(json.loads(value)[0])
         x = np.linspace(0, len(y), len(y))
         self.ui.sensor1_MplWidget.canvas.axes.clear()
-        self.ui.sensor1_MplWidget.canvas.axes.set_ylim([0, 30])
+        self.ui.sensor1_MplWidget.canvas.axes.set_ylim([0, 50])
         self.ui.sensor1_MplWidget.canvas.axes.plot(x, y)
         self.ui.sensor1_MplWidget.canvas.axes.set_title('Sensor 1 - temperature readings')
         self.ui.sensor1_MplWidget.canvas.draw()
+
+    def updateGraphHumidity(self):
+        if self.ui.sensor1_humidity_trend_btn.clicked:
+            y = []
+            data = pandas.read_csv('new_data.csv')
+            for value in data['humidity']:
+                y.append(json.loads(value)[0])
+            x = np.linspace(0, len(y), len(y))
+            self.ui.sensor1_MplWidget.canvas.axes.clear()
+            self.ui.sensor1_MplWidget.canvas.axes.set_ylim([0, 50])
+            self.ui.sensor1_MplWidget.canvas.axes.plot(x, y)
+            self.ui.sensor1_MplWidget.canvas.axes.set_title('Sensor 1 - humidity readings')
+            self.ui.sensor1_MplWidget.canvas.draw()
+
+
 
     def mousePressEvent(self, event):
 
@@ -186,15 +201,26 @@ class MyForm(QMainWindow):
 
         if width == 50:
             newwidth = 150
+            self.ui.sensors_button.setMinimumWidth(150)
+            self.ui.sensors_button.setText('SENSORS')
+            self.ui.sensors_button.setStyleSheet('background-image: url(:/icons/icons/cil-rss.png); '
+                                                 'background-repeat: none;'
+                                                 'background-position: center left;')
         else:
             newwidth = 50
+            self.ui.sensors_button.setMinimumWidth(50)
+            self.ui.sensors_button.setText('')
+            self.ui.sensors_button.setStyleSheet('background-image: url(:/icons/icons/cil-rss.png); '
+                                                 'background-repeat: none;'
+                                                 'background-position: center;')
 
         self.animation = QPropertyAnimation(self.ui.left_side_menu, b"minimumWidth")
-        self.animation.setDuration(150)
+        self.animation.setDuration(500)
         self.animation.setStartValue(width)
         self.animation.setEndValue(newwidth)
         self.animation.setEasingCurve(QtCore.QEasingCurve.InOutQuart)
         self.animation.start()
+
 
 
 if __name__ == "__main__":
