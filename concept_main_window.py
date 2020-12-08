@@ -182,7 +182,7 @@ class Ui_MainWindow(object):
         sizePolicy.setHeightForWidth(self.sensors_button.sizePolicy().hasHeightForWidth())
         self.sensors_button.setSizePolicy(sizePolicy)
         self.sensors_button.setMinimumSize(QtCore.QSize(50, 50))
-        self.sensors_button.setMaximumSize(QtCore.QSize(100, 16777215))
+        self.sensors_button.setMaximumSize(QtCore.QSize(16777215, 16777215))
         font = QtGui.QFont()
         font.setKerning(False)
         self.sensors_button.setFont(font)
@@ -195,19 +195,21 @@ class Ui_MainWindow(object):
         self.sensors_button.setDefault(False)
         self.sensors_button.setObjectName("sensors_button")
         self.formLayout.setWidget(0, QtWidgets.QFormLayout.SpanningRole, self.sensors_button)
-        self.accounts_button = QtWidgets.QPushButton(self.left_menu_top_buttons)
-        self.accounts_button.setMinimumSize(QtCore.QSize(150, 50))
-        self.accounts_button.setStyleSheet("background-image: url(:/icons/icons/cil-screen-desktop.png);\n"
+        self.reports_button = QtWidgets.QPushButton(self.left_menu_top_buttons)
+        self.reports_button.setMinimumSize(QtCore.QSize(50, 50))
+        self.reports_button.setStyleSheet("background-image: url(:/icons/icons/cil-screen-desktop.png);\n"
 "background-repeat: none;\n"
-"background-position: center left;")
-        self.accounts_button.setObjectName("accounts_button")
-        self.formLayout.setWidget(1, QtWidgets.QFormLayout.SpanningRole, self.accounts_button)
+"background-position: center;")
+        self.reports_button.setText("")
+        self.reports_button.setObjectName("reports_button")
+        self.formLayout.setWidget(1, QtWidgets.QFormLayout.SpanningRole, self.reports_button)
         self.verticalLayout_2.addWidget(self.left_menu_top_buttons)
         self.settings_button = QtWidgets.QPushButton(self.left_side_menu)
-        self.settings_button.setMinimumSize(QtCore.QSize(150, 50))
+        self.settings_button.setMinimumSize(QtCore.QSize(50, 50))
         self.settings_button.setStyleSheet("background-image: url(:/icons/icons/cil-settings.png);\n"
 "background-repeat: none;\n"
-"background-position: center left;")
+"background-position: center;")
+        self.settings_button.setText("")
         self.settings_button.setObjectName("settings_button")
         self.verticalLayout_2.addWidget(self.settings_button)
         self.horizontalLayout.addWidget(self.left_side_menu)
@@ -1220,8 +1222,6 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.accounts_button.setText(_translate("MainWindow", "REPORTS"))
-        self.settings_button.setText(_translate("MainWindow", "SETTINGS"))
         self.sensor1_label.setText(_translate("MainWindow", "WTR-IM"))
         self.sensor1_temp_label.setText(_translate("MainWindow", "Temperature:"))
         self.sensor1_humidity_label.setText(_translate("MainWindow", "Humidity:"))

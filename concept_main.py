@@ -9,6 +9,36 @@ import numpy as np
 WINDOW_SIZE = 0
 print('everything is working fine')
 
+
+MENU_BUTTON_ICONS_CENTER_LEFT = [
+    'background-image: url(:/icons/icons/cil-rss.png);'
+    'background-repeat: none;'
+    'background-position: center left;',
+    'background-image: url(:/icons/icons/cil-screen-desktop.png);'
+    'background-repeat: none;'
+    'background-position: center left;',
+    'background-image: url(:/icons/icons/cil-settings.png);'
+    'background-repeat: none;'
+    'background-position: center left;'
+]
+MENU_BUTTON_ICONS_CENTER = [
+    'background-image: url(:/icons/icons/cil-rss.png);'
+    'background-repeat: none;'
+    'background-position: center;',
+    'background-image: url(:/icons/icons/cil-screen-desktop.png);'
+    'background-repeat: none;'
+    'background-position: center;',
+    'background-image: url(:/icons/icons/cil-settings.png);'
+    'background-repeat: none;'
+    'background-position: center;'
+]
+
+MENU_BUTTONS_TEXT = [
+    'SENSORS',
+    'REPORTS',
+    'SETTINGS'
+]
+
 SENSORS_TYPE = [
     'temp',
     'humidity',
@@ -57,7 +87,7 @@ class MyForm(QMainWindow):
         self.ui.stackedWidget.setCurrentWidget(self.ui.sensors_page)
         self.ui.sensors_stacked_widget.setCurrentIndex(0)
         self.ui.sensors_button.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.sensors_page))
-        self.ui.accounts_button.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.accounts_page))
+        self.ui.reports_button.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.accounts_page))
         self.ui.settings_button.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.settings_page))
         self.ui.sensor1_next_btn.clicked.connect(lambda: self.nextPage())
         self.ui.sensor2_prev_btn.clicked.connect(lambda: self.prevPage())
@@ -66,6 +96,22 @@ class MyForm(QMainWindow):
         self.ui.sensor3_next_btn.clicked.connect(lambda: self.nextPage())
         self.ui.sensor4_prev_btn.clicked.connect(lambda: self.prevPage())
 
+        global MPLWIDGETS_NAMES
+
+        MPLWIDGETS_NAMES = [
+            self.ui.sensor1_MplWidget,
+            self.ui.sensor2_MplWidget,
+            self.ui.sensor3_MplWidget,
+            self.ui.sensor4_MplWidget,
+        ]
+
+
+        global MENU_BUTTONS
+        MENU_BUTTONS = [
+            self.ui.sensors_button,
+            self.ui.reports_button,
+            self.ui.settings_button
+        ]
         global SENSORS
         SENSORS = [
             self.ui.sensor1_temp_value,
@@ -87,8 +133,19 @@ class MyForm(QMainWindow):
         ]
         # self.ui.sensor1_temp_value.setText(whole_info['sensor1_temp'])
 
-        self.ui.sensor1_temp_trend_btn.clicked.connect(lambda: self.updateGraphTemp())
-        self.ui.sensor1_humidity_trend_btn.clicked.connect(lambda: self.updateGraphHumidity())
+        self.ui.sensor1_temp_trend_btn.clicked.connect(lambda: self.updateGraph(self.ui.sensor1_temp_trend_btn))
+        self.ui.sensor1_humidity_trend_btn.clicked.connect(lambda: self.updateGraph(self.ui.sensor1_humidity_trend_btn))
+        self.ui.sensor1_co2_trend_btn.clicked.connect(lambda: self.updateGraph(self.ui.sensor1_co2_trend_btn))
+        self.ui.sensor2_temp_trend_btn.clicked.connect(lambda: self.updateGraph(self.ui.sensor2_temp_trend_btn))
+        self.ui.sensor2_humidity_trend_btn.clicked.connect(lambda: self.updateGraph(self.ui.sensor2_humidity_trend_btn))
+        self.ui.sensor2_co2_trend_btn.clicked.connect(lambda: self.updateGraph(self.ui.sensor2_co2_trend_btn))
+        self.ui.sensor3_temp_trend_btn.clicked.connect(lambda: self.updateGraph(self.ui.sensor3_temp_trend_btn))
+        self.ui.sensor3_humidity_trend_btn.clicked.connect(lambda: self.updateGraph(self.ui.sensor3_humidity_trend_btn))
+        self.ui.sensor3_co2_trend_btn.clicked.connect(lambda: self.updateGraph(self.ui.sensor3_co2_trend_btn))
+        self.ui.sensor4_temp_trend_btn.clicked.connect(lambda: self.updateGraph(self.ui.sensor4_temp_trend_btn))
+        self.ui.sensor4_humidity_trend_btn.clicked.connect(lambda: self.updateGraph(self.ui.sensor4_humidity_trend_btn))
+        self.ui.sensor4_co2_trend_btn.clicked.connect(lambda: self.updateGraph(self.ui.sensor4_co2_trend_btn))
+
         # self.addToolBar(NavigationToolbar(self.ui.MplWidget.canvas, self.ui.MplWidget))
 
         # self.addToolBar(NavigationToolbar(self.ui.MplWidget.canvas, self.ui.MplWidget))
@@ -115,32 +172,35 @@ class MyForm(QMainWindow):
         self.ui.pushButton.clicked.connect(lambda: self.slideLeftMenu())
         self.show()
 
-    def updateGraphTemp(self):
+        check = self.ui.sensor1_co2_trend_btn.objectName()
+        print(check)
+        check2 = check.replace('sensor1_', '')
+        check2 = check2.replace('_trend_btn', '')
+        print(type(check2))
+        print(check2)
 
+    def updateGraph(self, button: Ui_MainWindow()):
         y = []
         data = pandas.read_csv('new_data.csv')
-        for value in data['temp']:
-            y.append(json.loads(value)[0])
+        name = button.objectName()
+        i = int(name[6]) - 1
+        part_to_replace = 'sensor' + str(i+1) + '_'
+        new_name = name.replace(part_to_replace, '')
+        new_name = new_name.replace('_trend_btn', '')
+        for value in data[new_name]:
+            y.append(json.loads(value)[i])
+
         x = np.linspace(0, len(y), len(y))
-        self.ui.sensor1_MplWidget.canvas.axes.clear()
-        self.ui.sensor1_MplWidget.canvas.axes.set_ylim([0, 50])
-        self.ui.sensor1_MplWidget.canvas.axes.plot(x, y)
-        self.ui.sensor1_MplWidget.canvas.axes.set_title('Sensor 1 - temperature readings')
-        self.ui.sensor1_MplWidget.canvas.draw()
-
-    def updateGraphHumidity(self):
-        if self.ui.sensor1_humidity_trend_btn.clicked:
-            y = []
-            data = pandas.read_csv('new_data.csv')
-            for value in data['humidity']:
-                y.append(json.loads(value)[0])
-            x = np.linspace(0, len(y), len(y))
-            self.ui.sensor1_MplWidget.canvas.axes.clear()
-            self.ui.sensor1_MplWidget.canvas.axes.set_ylim([0, 50])
-            self.ui.sensor1_MplWidget.canvas.axes.plot(x, y)
-            self.ui.sensor1_MplWidget.canvas.axes.set_title('Sensor 1 - humidity readings')
-            self.ui.sensor1_MplWidget.canvas.draw()
-
+        print(True)
+        for widget in MPLWIDGETS_NAMES:
+            widget_name = widget.objectName()
+            if widget_name[6] == str(i + 1):
+                print(True)
+                widget.canvas.axes.clear()
+                widget.canvas.axes.set_ylim([0, 50])
+                widget.canvas.axes.plot(x, y)
+                widget.canvas.axes.set_title('Sensor ' + str(i+1) + ' - ' + new_name + ' readings')
+                widget.canvas.draw()
 
 
     def mousePressEvent(self, event):
@@ -150,7 +210,6 @@ class MyForm(QMainWindow):
         self.clickPosition = event.globalPos()
         # We will use this value to move the window
         # ###############################################
-
     # ###############################################
 
     def restore_or_maximize_window(self):
@@ -175,7 +234,6 @@ class MyForm(QMainWindow):
             # Update button icon
             # self.ui.restoreButton.setIcon(QtGui.QIcon(u":/icons/icons/cil-window-restore.png"))#Show minized icon
 
-
     def getSensorsValue(self):
 
         data = pandas.read_csv('new_data.csv')
@@ -183,7 +241,6 @@ class MyForm(QMainWindow):
         for sensor, sensor_type, i in zip(SENSORS, SENSORS_TYPE, SENSORS_INDEX):
             sensors_value = str(round(json.loads(data_last_row[sensor_type])[i], 2))
             sensor.setText(sensors_value)
-
 
     def nextPage(self):
 
@@ -195,24 +252,23 @@ class MyForm(QMainWindow):
         i = self.ui.sensors_stacked_widget.currentIndex()
         self.ui.sensors_stacked_widget.setCurrentIndex(i - 1)
 
+
+
     def slideLeftMenu(self):
 
         width = self.ui.left_side_menu.width()
+        for button, text, icon1, icon2 in zip(MENU_BUTTONS, MENU_BUTTONS_TEXT, MENU_BUTTON_ICONS_CENTER_LEFT, MENU_BUTTON_ICONS_CENTER):
 
-        if width == 50:
-            newwidth = 150
-            self.ui.sensors_button.setMinimumWidth(150)
-            self.ui.sensors_button.setText('SENSORS')
-            self.ui.sensors_button.setStyleSheet('background-image: url(:/icons/icons/cil-rss.png); '
-                                                 'background-repeat: none;'
-                                                 'background-position: center left;')
-        else:
-            newwidth = 50
-            self.ui.sensors_button.setMinimumWidth(50)
-            self.ui.sensors_button.setText('')
-            self.ui.sensors_button.setStyleSheet('background-image: url(:/icons/icons/cil-rss.png); '
-                                                 'background-repeat: none;'
-                                                 'background-position: center;')
+            if width == 50:
+                newwidth = 150
+                button.setMinimumWidth(150)
+                button.setText(text)
+                button.setStyleSheet(icon1)
+            else:
+                newwidth = 50
+                button.setMinimumWidth(50)
+                button.setText('')
+                button.setStyleSheet(icon2)
 
         self.animation = QPropertyAnimation(self.ui.left_side_menu, b"minimumWidth")
         self.animation.setDuration(500)
